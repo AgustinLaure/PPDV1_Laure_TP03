@@ -1,6 +1,6 @@
 local playerIniPosX = 300
 local playerIniPosY = 300
-local playerIniDirX = 1
+local playerIniDirX = 0
 local playerIniDirY = 0
 local playerIniWidth = 10
 local playerIniHeight = 20
@@ -21,14 +21,38 @@ function Player.init(player)
     return playerAux
 end
 
+function Player.keypressed(player, key)
+
+	if key == "right" then
+		player.dir.x = 1
+	end if key == "left" then
+		player.dir.x = -1
+	end if key == "up" then
+		player.dir.y = -1
+	end if key == "down" then
+		player.dir.y = 1
+	end
+end
+
+function Player.keyreleased(player, key)
+
+	if key == "right" and player.dir.x == 1 then
+		player.dir.x = 0	
+	end if key == "left"  and player.dir.x == -1 then
+		player.dir.x = 0
+	end if key == "up"  and player.dir.y == -1 then
+		player.dir.y = 0	
+	end if key == "down"  and player.dir.y == 1 then
+		player.dir.y = 0
+	end
+end
+
 function Player.update(player, dt)
     Player.move(player, dt)
 end
 
 function Player.move(player, dt)
-    print (player.pos.x)
-    print ("  ")
-    print (player.dir.y)
+		
     player.pos.x = player.pos.x + player.dir.x * dt * player.speed
     player.pos.y = player.pos.y + player.dir.y * dt * player.speed
 end

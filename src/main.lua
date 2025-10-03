@@ -6,7 +6,15 @@ function love.load()
     player = Player.init(player)
 end
 
-function love.update(dt)
+function love.keypressed(key)
+	Player.keypressed(player, key)
+end
+
+function love.keyreleased(key)
+	Player.keyreleased(player, key)
+end
+
+function love.update(dt)	
     Player.update(player, dt)
 end
 
