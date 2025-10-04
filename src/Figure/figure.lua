@@ -4,7 +4,7 @@ local gs = require ("Math/gamespace")
 
 local Figure = {}
 
-local initialSpeed = 300;
+local initialSpeed = 500;
 
 function Figure.init()
     figureAux = {}
@@ -13,7 +13,7 @@ function Figure.init()
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
-	figureAux.accel = 2000
+	figureAux.accel = 3000
     figureAux.isBeingGrabbed = false
 	figureAux.isFalling = false;
 
