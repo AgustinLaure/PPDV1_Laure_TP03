@@ -3,7 +3,7 @@ local Vector = require ("Math/vector")
 
 local Player = {}
 
-function Player.initPlayer()
+function Player.init()
 	player = {}
 	player.isGrabbing = false
 	
