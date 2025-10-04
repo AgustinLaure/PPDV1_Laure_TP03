@@ -28,16 +28,17 @@ end
 
 function Form.fixPosition(rect1, rect2)
 
-    howMuchEntered = {}
-    howMuchEntered = Vector.initVector2()
-    rect1.form.pos.x = 
-    rect1.form.pos = 
-    
     Form.getHowMuchEntered(rect1, rect2)
 end
 
 function Form.getHowMuchEntered(rect1, rect2)
+    howMuchEntered = {}
+    howMuchEntered.x = 0
+    howMuchEntered.y = 0
 
+
+
+    return howMuchEntered
 end
 
 return Form

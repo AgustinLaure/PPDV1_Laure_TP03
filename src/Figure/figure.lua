@@ -13,7 +13,12 @@ function Figure.init(x,y, width, height)
 
 end
 
-function Figure.update(figure, dt)
+function Figure.update(figure, floor, dt)
+    if (Form.isColliding(figure, floor)) then
+        figure.speed = 0
+    else
+        figure.speed = 100
+    end
     Figure.move(figure, dt)
 end
 
