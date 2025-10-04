@@ -7,15 +7,15 @@ function World.init()
 
 	world = {}
 	world.floor = Form.initRectangle(0, gs.gameHeight - 100, gs.gameWidth, 100)
-	world.rightWall = Form.initRectangle(0,0, 20, gs.gameHeight)
-	world.leftWall = Form.initRectangle(gs.gameWidth- 20,0, 50, gs.gameHeight)
+	world.leftWall = Form.initRectangle( 0, 0, 0, gs.gameHeight)
+	world.rightWall = Form.initRectangle(gs.gameWidth, 0, 0, gs.gameHeight)
 	return world
 end
 
 function World.draw(world)
     Form.draw(world.floor)
-	Form.draw(world.rightWall)
 	Form.draw(world.leftWall)
+	Form.draw(world.rightWall)
 end
 
 return World
