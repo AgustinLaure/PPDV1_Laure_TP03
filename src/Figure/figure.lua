@@ -1,7 +1,6 @@
 local Figure = {}
 local Vector = require ("Math/vector")
 local Form = require("Math/form")
-local toRes = require("Math/toresolution")
 
 function Figure.init(x,y, width, height)
     figureAux = {}

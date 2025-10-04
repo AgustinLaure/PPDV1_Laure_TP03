@@ -1,6 +1,6 @@
 
 local Vector = require ("Math/vector")
-local toRes = require("Math/toresolution")
+local gs = require("Math/gamespace")
 
 local Form = {}
 
@@ -41,7 +41,7 @@ function Form.getHowMuchEntered(rect1, rect2)
 end
 
 function Form.draw(form)
-    love.graphics.rectangle("fill", toRes.x(form.pos.x), toRes.y(form.pos.y), toRes.x(form.width), toRes.y(form.height))
+    love.graphics.rectangle("fill", gs.toResX(form.pos.x), gs.toResY(form.pos.y), gs.toResX(form.width), gs.toResY(form.height))
 end
 
 return Form

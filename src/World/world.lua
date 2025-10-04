@@ -1,12 +1,12 @@
 local Form = require("Math/form")
-local toRes = require("Math/toresolution")
+local gs = require("Math/gamespace")
 
 local World = {}
 
 function World.init()
 
 	world = {}
-	world.floor = Form.initRectangle(0, toRes.gameHeight - 100, toRes.gameWidth, 100)
+	world.floor = Form.initRectangle(0, gs.gameHeight - 100, gs.gameWidth, 100)
 	return world
 end
 
