@@ -8,6 +8,7 @@ local Collisions = require ("Game/collisions")
 local Player = require ("Player/player")
 local Figure = require ("Figure/figure")
 local World = require ("World/world")
+local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
 
@@ -16,23 +17,15 @@ function Game.init()
 	game.player = Player.init()
     game.figure = Figure.init()
 	game.world = World.init()	
+	game.mergeMach = MergeMach.init()
 	
 	return game
 end
 
 function Game.update(game, dt)
 	Player.update(game.player)
-	
-<<<<<<< HEAD
+	MergeMach.update(game.mergeMach)
 	Figure.update(game.figure, world.floor, game.player.mouse, dt)
-=======
-	-- loop for each figure	
-	game.figure.isFalling = not Collisions.rectOnRect(game.figure.form, game.world.floor) -- If figure isn't colliding with floor, it's falling;
-	if game.figure.isBeingGrabbed then	
-		dragFigure(game.player.mouse, game.figure)
-	end
-	Figure.update(game.figure, dt)
->>>>>>> refs/remotes/origin/main
 end
 
 function Game.draw(game)
@@ -51,6 +44,7 @@ function Game.draw(game)
 	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
 	]]
 	
+	MergeMach.draw(game.mergeMach)
 	World.draw(game.world)
     Figure.draw(game.figure)
 end
