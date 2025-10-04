@@ -1,6 +1,6 @@
 
 local Vector = require ("Math/vector")
-
+local Form = require ("Math/form")
 local Player = {}
 
 function Player.init()
@@ -10,7 +10,7 @@ function Player.init()
 	return player
 end
 
-function Player.mousepressed(player, x, y, button)
+function Player.mousepressed(player, x, y, button, form)
 	player.isGrabbing = true;
 end
 

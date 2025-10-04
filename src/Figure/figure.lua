@@ -1,6 +1,7 @@
 local Figure = {}
 local Vector = require ("Math/vector")
 local Form = require("Math/form")
+local Gs = require ("Math/gamespace")
 
 function Figure.init(x,y, width, height)
     figureAux = {}
@@ -8,6 +9,7 @@ function Figure.init(x,y, width, height)
     figureAux.form = Form.initRectangle(0, 0, 100, 100)
     figureAux.dir = Vector.initVector2(0,1)
     figureAux.speed = 100
+    figureAux.isBeingGrabbed = false
 
     return figureAux
 
@@ -15,7 +17,16 @@ end
 
 function Figure.update(figure, world, player, dt)
 
+    local x,y = love.mouse.getPosition()
     if (player.isGrabbing) then
+
+        --if (Form.isColliding(figure.form, (x,y,1,1))) then
+        --figure.isBeingGrabbed
+        --end
+
+    end
+    
+    if (figure.isBeingGrabbed) then
         Figure.onDragging(figure)
     else
         Figure.onFalling(figure, dt)
@@ -41,8 +52,8 @@ end
 
 function Figure.onDragging(figure)
     local x,y = love.mouse.getPosition()
-    figure.form.pos.x = x 
-    figure.form.pos.y = y 
+    figure.form.pos.x = Gs.toResX(x) 
+    figure.form.pos.y = Gs.toResY(y) 
 
 end
 

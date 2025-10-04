@@ -10,6 +10,7 @@ function love.load()
 	
     figure1 = Figure.init()
 	world = World.init()
+	
 end
 
 function love.update(dt)	
