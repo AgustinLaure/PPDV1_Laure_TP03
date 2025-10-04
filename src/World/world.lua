@@ -6,7 +6,7 @@ local World = {}
 function World.init()
 
 	world = {}
-	world.floor = Form.initRectangle(0, 600 - 100, 1000, 100)
+	world.floor = Form.initRectangle(0, toRes.gameHeight - 100, toRes.gameWidth, 100)
 	return world
 end
 

@@ -1,14 +1,14 @@
 local toRes = {}
 
-local gameWidth = 1000
-local gameHeight = 600
+toRes.gameWidth = 1000
+toRes.gameHeight = 600
 
 function toRes.x(x)
-	return x * love.graphics.getPixelWidth() / gameWidth
+	return x * love.graphics.getPixelWidth() / toRes.gameWidth
 end
 
 function toRes.y(y)
-	return y * love.graphics.getPixelHeight() / gameHeight
+	return y * love.graphics.getPixelHeight() / toRes.gameHeight
 end
 
 return toRes
