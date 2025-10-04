@@ -23,7 +23,16 @@ end
 function Game.update(game, dt)
 	Player.update(game.player)
 	
+<<<<<<< HEAD
 	Figure.update(game.figure, world.floor, game.player.mouse, dt)
+=======
+	-- loop for each figure	
+	game.figure.isFalling = not Collisions.rectOnRect(game.figure.form, game.world.floor) -- If figure isn't colliding with floor, it's falling;
+	if game.figure.isBeingGrabbed then	
+		dragFigure(game.player.mouse, game.figure)
+	end
+	Figure.update(game.figure, dt)
+>>>>>>> refs/remotes/origin/main
 end
 
 function Game.draw(game)
