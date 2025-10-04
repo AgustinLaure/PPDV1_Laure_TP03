@@ -12,8 +12,8 @@ local World = require ("World/world")
 local Game = {}
 
 local function dragFigure(mouse, figure)
-    figure.form.pos.x = mouse.x 
-    figure.form.pos.y = mouse.y 
+    figure.form.pos.x = mouse.x - figure.grabOffset.x
+    figure.form.pos.y = mouse.y - figure.grabOffset.y
 end
 
 function Game.init()
@@ -58,6 +58,9 @@ function Game.mousepressed(game, x, y, button)
 	if not game.player.isGrabbing then
 	
         if Collisions.pointOnRect(game.player.mouse, game.figure.form) then
+			game.figure.grabOffset.x = game.player.mouse.x - game.figure.form.pos.x
+			game.figure.grabOffset.y = game.player.mouse.y - game.figure.form.pos.y
+		
 			game.figure.isBeingGrabbed = true;
 			game.player.isGrabbing = true;
         end

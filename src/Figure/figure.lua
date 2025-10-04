@@ -7,8 +7,9 @@ local Figure = {}
 function Figure.init()
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(0, 0, 100, 100)
+    figureAux.form = Form.initRectangle(0, 0, 50, 70)
     figureAux.dir = Vector.initVector2(0,1)
+	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = 500
     figureAux.isBeingGrabbed = false
 	figureAux.isFalling = false;
