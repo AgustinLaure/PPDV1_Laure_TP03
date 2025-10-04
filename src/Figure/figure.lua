@@ -26,5 +26,4 @@ function Figure.move(figure, dt)
     figure.form.pos.y = figure.form.pos.y + figure.dir.y * figure.speed * dt
 end
 
-
 return Figure
