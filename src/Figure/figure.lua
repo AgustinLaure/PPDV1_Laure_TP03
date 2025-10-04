@@ -15,11 +15,11 @@ end
 
 function Figure.update(figure, world, dt)
 
-    if (Form.isColliding(figure, floor)) then
-        figure.speed = 0
-    else
-        figure.speed = 100
-    end
+    --if (Form.isColliding(figure, world.floor)) then
+    --    figure.speed = 0
+    --else
+   --     figure.speed = 100
+    --end
 
     Figure.move(figure, dt)
 end
