@@ -11,8 +11,7 @@ function World.init()
 end
 
 function World.draw(world)
-    love.graphics.rectangle("fill", toRes.x(world.floor.pos.x), toRes.y(world.floor.pos.y), toRes.x(world.floor.width), toRes.y(world.floor.height))
-	love.graphics.print(world.floor.width, 0, 0)
+    Form.draw(world.floor)
 end
 
 return World

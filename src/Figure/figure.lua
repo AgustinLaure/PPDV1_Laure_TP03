@@ -1,11 +1,12 @@
 local Figure = {}
 local Vector = require ("Math/vector")
 local Form = require("Math/form")
+local toRes = require("Math/toresolution")
 
 function Figure.init(x,y, width, height)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(x, y, width, height)
+    figureAux.form = Form.initRectangle(0, 0, 100, 100)
     figureAux.dir = Vector.initVector2(0,1)
     figureAux.speed = 100
 
@@ -25,7 +26,7 @@ function Figure.update(figure, world, dt)
 end
 
 function Figure.draw(figure)
-    love.graphics.rectangle("fill", figure.form.pos.x,figure.form.pos.y, figure.form.width,figure.form.height)
+    Form.draw(figure.form)
 end
 
 function Figure.move(figure, dt)
