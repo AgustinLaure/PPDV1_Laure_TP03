@@ -1,60 +1,39 @@
-local Figure = {}
 local Vector = require ("Math/vector")
 local Form = require("Math/form")
-local Gs = require ("Math/gamespace")
+local gs = require ("Math/gamespace")
 
-function Figure.init(x,y, width, height)
+local Figure = {}
+
+function Figure.init()
     figureAux = {}
 
     figureAux.form = Form.initRectangle(0, 0, 100, 100)
     figureAux.dir = Vector.initVector2(0,1)
-    figureAux.speed = 100
+    figureAux.speed = 500
     figureAux.isBeingGrabbed = false
+	figureAux.isFalling = false;
 
     return figureAux
-
 end
 
-function Figure.update(figure, world, player, dt)
+function Figure.update(figure, dt)
 
-    local x,y = love.mouse.getPosition()
-    if (player.isGrabbing) then
+    Figure.fall(figure, dt)
+end
 
-        --if (Form.isColliding(figure.form, (x,y,1,1))) then
-        --figure.isBeingGrabbed
-        --end
+function Figure.fall(figure, dt)
 
-    end
-    
-    if (figure.isBeingGrabbed) then
-        Figure.onDragging(figure)
-    else
-        Figure.onFalling(figure, dt)
-    end
-    
+    if (figure.isFalling) then
+		figure.dir.y = 1
+    else 
+		figure.dir.y = 0
+	end
+	figure.form.pos.y = figure.form.pos.y + figure.dir.y * figure.speed * dt
+	--figure.form.pos.x = figure.form.pos.x + figure.dir.x * figure.speed * dt
 end
 
 function Figure.draw(figure)
     Form.draw(figure.form)
-end
-
-function Figure.onFalling(figure, dt)
-
-    if (Form.isColliding(figure.form, world.floor)) then
-        figure.speed = 0
-    else
-        figure.speed = 100
-    end
-
-    figure.form.pos.x = figure.form.pos.x + figure.dir.x * figure.speed * dt
-    figure.form.pos.y = figure.form.pos.y + figure.dir.y * figure.speed * dt
-end
-
-function Figure.onDragging(figure)
-    local x,y = love.mouse.getPosition()
-    figure.form.pos.x = Gs.toResX(x) 
-    figure.form.pos.y = Gs.toResY(y) 
-
 end
 
 return Figure

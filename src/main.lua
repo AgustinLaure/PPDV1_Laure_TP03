@@ -1,37 +1,24 @@
-local Figure = require ("Figure/figure")
-local Player = require ("Player/player")
-local World = require("World/world")
+local Game = require ("Game/game")
 
-local figure1 = {}
-local player = {}
-local world = {}
+local game = {}
 
 function love.load()
-	
-    figure1 = Figure.init()
-	world = World.init()
-	
+	--love.window.setMode(1920, 1080)
+	game = Game.init()
 end
 
 function love.update(dt)	
-    Figure.update(figure1, world, player, dt)
+    Game.update(game, dt)
 end
 
 function love.draw()
-
-    love.graphics.setColor(1, 1, 1)
-	if player.isGrabbing then
-		love.graphics.circle("fill", love.mouse.getX(), love.mouse.getY(), 10)
-	end
-	
-	World.draw(world)
-    Figure.draw(figure1)
+	Game.draw(game)
 end
 
 function love.mousepressed( x, y, button)
-	Player.mousepressed(player, x, y, button)
+	Game.mousepressed(game, x, y, button)
 end
 
 function love.mousereleased( x, y, button)
-	Player.mousereleased(player, x, y, button)
+	Game.mousereleased(game, x, y, button)
 end
