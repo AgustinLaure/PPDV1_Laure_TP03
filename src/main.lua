@@ -7,8 +7,8 @@ local player = {}
 local world = {}
 
 function love.load()
-	player = Player.init()
-    figure1 = Figure.init(100,100, 30, 40)
+	
+    figure1 = Figure.init()
 	world = World.init()
 end
 

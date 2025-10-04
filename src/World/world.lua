@@ -1,17 +1,17 @@
 local Form = require("Math/form")
+local toRes = require("Math/toresolution")
 
 local World = {}
 
 function World.init()
 
-	width, height = love.graphics.getDimensions()
 	world = {}
-	world.floor = Form.initRectangle(0, height - 10, width, 10)
+	world.floor = Form.initRectangle(0, toRes.gameHeight - 100, toRes.gameWidth, 100)
 	return world
 end
 
 function World.draw(world)
-    love.graphics.rectangle("fill", world.floor.pos.x, world.floor.pos.y, world.floor.width, world.floor.height)
+    Form.draw(world.floor)
 end
 
 return World
