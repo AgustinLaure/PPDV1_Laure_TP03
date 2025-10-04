@@ -1,6 +1,7 @@
 local Vector = require ("Math/vector")
 local Form = require("Math/form")
 local gs = require ("Math/gamespace")
+local coll = require ("Game/collisions")
 
 local Figure = {}
 
@@ -20,7 +21,19 @@ function Figure.init()
     return figureAux
 end
 
-function Figure.update(figure, dt)
+function Figure.drag(mouse, figure)
+    figure.form.pos.x = mouse.x - figure.grabOffset.x
+    figure.form.pos.y = mouse.y - figure.grabOffset.y
+end
+
+function Figure.update(figure, floor, mouse, dt)
+
+    -- loop for each figure	
+    print (figure.grabOffset.x)
+	figure.isFalling = not coll.rectOnRect(figure.form, floor) -- If figure isn't colliding with floor, it's falling;
+	if game.figure.isBeingGrabbed then
+		Figure.drag(mouse, figure)
+	end
 
     Figure.fall(figure, dt)
 end

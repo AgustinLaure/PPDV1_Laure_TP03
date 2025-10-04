@@ -11,11 +11,6 @@ local World = require ("World/world")
 
 local Game = {}
 
-local function dragFigure(mouse, figure)
-    figure.form.pos.x = mouse.x - figure.grabOffset.x
-    figure.form.pos.y = mouse.y - figure.grabOffset.y
-end
-
 function Game.init()
 	game = {}
 	game.player = Player.init()
@@ -28,12 +23,7 @@ end
 function Game.update(game, dt)
 	Player.update(game.player)
 	
-	-- loop for each figure	
-	game.figure.isFalling = not Collisions.rectOnRect(game.figure.form, game.world.floor) -- If figure isn't colliding with floor, it's falling;
-	if game.figure.isBeingGrabbed then
-		dragFigure(game.player.mouse, game.figure)
-	end
-	Figure.update(game.figure, dt)
+	Figure.update(game.figure, world.floor, game.player.mouse, dt)
 end
 
 function Game.draw(game)
