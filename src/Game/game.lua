@@ -42,15 +42,18 @@ function Game.draw(game)
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
 	end
 	
+	love.graphics.print("speed: " .. game.figure.speed, 0, 0)
+	
+	--[[
 	love.graphics.print("mouse res: x: " .. love.mouse.getX() .. " y: " .. love.mouse.getY(), 0, 0)
 	love.graphics.print("mouse game: x: " .. game.player.mouse.x .. " y: " .. game.player.mouse.y, 0, 20)
 	love.graphics.print("figure game: x: " .. game.figure.form.pos.x .. " y: " .. game.figure.form.pos.y, 0, 40)
+	love.graphics.print("figure res: x: " .. gs.toResX(game.figure.form.pos.x), 0, 60)	
+	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
+	]]
 	
 	World.draw(game.world)
     Figure.draw(game.figure)
-	
-	love.graphics.print("figure res: x: " .. gs.toResX(game.figure.form.pos.x), 0, 60)	
-	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
 end
 
 function Game.mousepressed(game, x, y, button)
@@ -61,8 +64,8 @@ function Game.mousepressed(game, x, y, button)
 			game.figure.grabOffset.x = game.player.mouse.x - game.figure.form.pos.x
 			game.figure.grabOffset.y = game.player.mouse.y - game.figure.form.pos.y
 		
-			game.figure.isBeingGrabbed = true;
-			game.player.isGrabbing = true;
+			game.figure.isBeingGrabbed = true
+			game.player.isGrabbing = true
         end
     end
 	
