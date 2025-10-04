@@ -16,21 +16,35 @@ end
 
 function Figure.update(figure, world, player, dt)
 
-    if (Form.isColliding(figure.form, world.floor)) then
-        figure.speed = 0
+    if (player.isGrabbing) then
+        Figure.onDragging(figure)
     else
-        figure.speed = 100
+        Figure.onFalling(figure, dt)
     end
-        Figure.move(figure, dt)
+    
 end
 
 function Figure.draw(figure)
     Form.draw(figure.form)
 end
 
-function Figure.move(figure, dt)
+function Figure.onFalling(figure, dt)
+
+    if (Form.isColliding(figure.form, world.floor)) then
+        figure.speed = 0
+    else
+        figure.speed = 100
+    end
+
     figure.form.pos.x = figure.form.pos.x + figure.dir.x * figure.speed * dt
     figure.form.pos.y = figure.form.pos.y + figure.dir.y * figure.speed * dt
+end
+
+function Figure.onDragging(figure)
+    local x,y = love.mouse.getPosition()
+    figure.form.pos.x = x 
+    figure.form.pos.y = y 
+
 end
 
 return Figure
