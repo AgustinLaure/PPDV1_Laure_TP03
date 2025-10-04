@@ -13,7 +13,7 @@ function love.load()
 end
 
 function love.update(dt)	
-    Figure.update(figure1, world, dt)
+    Figure.update(figure1, world, player, dt)
 end
 
 function love.draw()

@@ -13,7 +13,7 @@ function Figure.init(x,y, width, height)
 
 end
 
-function Figure.update(figure, world, dt)
+function Figure.update(figure, world, player, dt)
 
     if (Form.isColliding(figure.form, world.floor)) then
         figure.speed = 0
