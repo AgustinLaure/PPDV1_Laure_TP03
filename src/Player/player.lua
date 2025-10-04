@@ -16,8 +16,8 @@ end
 
 function Player.update(player)
     x,y = love.mouse.getPosition()
-	player.mouse.x = x
-	player.mouse.y = y
+	player.mouse.x = gs.toGameX(x)
+	player.mouse.y = gs.toGameY(y)
 end
 
 function Player.mousepressed(player, x, y, button)
