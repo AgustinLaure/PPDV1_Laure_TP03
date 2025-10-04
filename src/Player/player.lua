@@ -21,33 +21,23 @@ function Player.init(player)
     return playerAux
 end
 
-function Player.keypressed(player, key)
-
-	if key == "right" then
+function Player.input(player)
+	player.dir.x = 0
+	player.dir.y = 0
+	
+	if love.keyboard.isDown("right") then
 		player.dir.x = 1
-	end if key == "left" then
+	end if love.keyboard.isDown("left") then
 		player.dir.x = -1
-	end if key == "up" then
+	end if love.keyboard.isDown("up") then
 		player.dir.y = -1
-	end if key == "down" then
+	end if love.keyboard.isDown("down") then
 		player.dir.y = 1
 	end
 end
 
-function Player.keyreleased(player, key)
-
-	if key == "right" and player.dir.x == 1 then
-		player.dir.x = 0	
-	end if key == "left"  and player.dir.x == -1 then
-		player.dir.x = 0
-	end if key == "up"  and player.dir.y == -1 then
-		player.dir.y = 0	
-	end if key == "down"  and player.dir.y == 1 then
-		player.dir.y = 0
-	end
-end
-
 function Player.update(player, dt)
+	Player.input(player)
     Player.move(player, dt)
 end
 
