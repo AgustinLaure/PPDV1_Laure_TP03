@@ -22,7 +22,13 @@ function Figure.init()
 end
 
 function Figure.drag(mouse, figure)
-    figure.form.pos.x = mouse.x - figure.grabOffset.x
+    if mouse.x - figure.grabOffset.x < world.leftWall.pos.x then
+        figure.form.pos.x = world.leftWall.pos.x
+    elseif (mouse.x - figure.grabOffset.x) + figure.form.width > world.rightWall.pos.x then
+        figure.form.pos.x = world.rightWall.pos.x - figure.form.width
+    else 
+        figure.form.pos.x = mouse.x - figure.grabOffset.x
+    end
     figure.form.pos.y = mouse.y - figure.grabOffset.y
 end
 
