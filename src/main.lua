@@ -12,7 +12,7 @@ function love.load()
 	world = World.init()
 end
 
-function love.update(dt)	
+function love.update(dt, world.floor)	
     Figure.update(figure1, dt)
 end
 

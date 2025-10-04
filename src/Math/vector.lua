@@ -9,11 +9,4 @@ function Vector.initVector2 (givenX, givenY)
     return auxVector
 end
 
-function Vector.getVectorsSum(v1, v2)
-
-    result = {}
-
-    result.pos.x = v1.pos.x + v2.pos.x
-end
-
 return Vector
