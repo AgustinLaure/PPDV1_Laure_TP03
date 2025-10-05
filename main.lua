@@ -3,7 +3,7 @@ local Game = require ("src/Game/game")
 local game = {}
 
 function love.load()
-	love.window.setMode(960, 720)
+	love.window.setMode(1280, 720)
 	love.window.setFullscreen(false)
 	game = Game.init()
 end

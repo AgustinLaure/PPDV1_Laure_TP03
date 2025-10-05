@@ -17,7 +17,7 @@ local sprites =
 function Figure.init(type)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(100, 10, 50, 70)
+    figureAux.form = Form.initRectangle(100, 10, 75, 105)
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
@@ -47,11 +47,8 @@ function Figure.drag(mouse, figure)
 end
 
 function Figure.update(game, i, dt)
-
-    -- loop for each figure	
-    --print (figure.grabOffset.x)
-    
-	game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling;
+  
+	game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling
 	if game.figures[i].isBeingGrabbed then
 		Figure.drag(game.player.mouse, game.figures[i])
         game.figures[i].isFalling = false
@@ -76,8 +73,8 @@ function Figure.fall(figure, dt)
 end
 
 function Figure.draw(figure)
-    love.graphics.draw(figure.sprite, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y),math.rad(0), 0.5, 0.5, figure.form.width, figure.form.height) --Sprite, x, y, rotation, scaleX, scaleY, width, height
-    Form.draw(figure.form)
+    love.graphics.draw(figure.sprite, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y),math.rad(0), gs.SpriteToResX(), gs.SpriteToResY()) --Sprite, x, y, rotation, scaleX, scaleY, width, height
+    --Form.draw(figure.form)
     love.graphics.setColor(1,0,0)
     love.graphics.print(figure.type, gs.toResX(figure.form.pos.x) + figure.form.width / 2, gs.toResY(figure.form.pos.y) + figure.form.height/2)
     love.graphics.setColor(1,1,1)
