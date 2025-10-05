@@ -1,14 +1,14 @@
 local Form = require("src/Math/form")
-local gs = require("src/Math/gamespace")
+local const = require ("src/Config/const")
 
 local World = {}
 
 function World.init()
 
 	world = {}
-	world.floor = Form.initRectangle(0, gs.gameHeight - 100, gs.gameWidth, 100)
-	world.leftWall = Form.initRectangle( 0, 0, 0, gs.gameHeight)
-	world.rightWall = Form.initRectangle(gs.gameWidth, 0, 0, gs.gameHeight)
+	world.floor = Form.initRectangle(0, const.gameHeight - 106, const.gameWidth, 106)
+	world.leftWall = Form.initRectangle( 0, 0, 0, const.gameHeight)
+	world.rightWall = Form.initRectangle(const.gameWidth, 0, 0, const.gameHeight)
 	return world
 end
 
