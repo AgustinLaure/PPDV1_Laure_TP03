@@ -40,7 +40,7 @@ function MergeMach.update(mergeMach, figures)
 
         if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasCreated then
 
-            MergeMach.createFigure(figures, mergeMach.resultHolder, mergeMach.leftHolder, mergeMach.rightHolder, 75, 105)
+            MergeMach.createFigure(figures, mergeMach.resultHolder, mergeMach.leftHolder, mergeMach.rightHolder, Figure.sizeX, Figure.sizeY)
             mergeMach.hasCreated = true
         end
         

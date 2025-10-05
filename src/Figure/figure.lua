@@ -2,10 +2,14 @@ local Vector = require ("src/Math/vector")
 local Form = require("src/Math/form")
 local gs = require ("src/Math/gamespace")
 local coll = require ("src/Game/collisions")
+local Sprite = require ("src/Textures/sprites")
 
 local Figure = {}
 
 local initialSpeed = 500;
+
+Figure.sizeX = 75
+Figure.sizeY = 105
 
 local sprites = 
 {
@@ -17,7 +21,7 @@ local sprites =
 function Figure.init(type)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(100, 10, 75, 105)
+    figureAux.form = Form.initRectangle(100, 10, Figure.sizeX, Figure.sizeY)
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
@@ -73,7 +77,7 @@ function Figure.fall(figure, dt)
 end
 
 function Figure.draw(figure)
-    love.graphics.draw(figure.sprite, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y),math.rad(0), gs.SpriteToResX(), gs.SpriteToResY()) --Sprite, x, y, rotation, scaleX, scaleY, width, height
+	Sprite.drawFigure(figure)
     --Form.draw(figure.form)
     love.graphics.setColor(1,0,0)
     love.graphics.print(figure.type, gs.toResX(figure.form.pos.x) + figure.form.width / 2, gs.toResY(figure.form.pos.y) + figure.form.height/2)
