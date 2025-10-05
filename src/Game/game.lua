@@ -8,6 +8,7 @@ local Collisions = require ("Game/collisions")
 local Player = require ("Player/player")
 local Figure = require ("Figure/figure")
 local World = require ("World/world")
+local Shelf = require ("World/Shelf")
 local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
@@ -24,6 +25,7 @@ function Game.init()
 	game.player = Player.init()
 	game.figures = {Figure.init(100, 10, 50, 70), Figure.init(200, 0, 50, 70), Figure.init(300, 0, 50, 70)}
 	game.world = World.init()	
+	game.Shelf = Shelf.init()
 	game.mergeMach = MergeMach.init()
 	
 	return game
@@ -57,7 +59,8 @@ function Game.draw(game)
 	
 	MergeMach.draw(game.mergeMach)
 	World.draw(game.world)
-
+	Shelf.draw(game.Shelf)
+	
 	for i=1, #game.figures do
 		Figure.draw(game.figures[i])
 	end
