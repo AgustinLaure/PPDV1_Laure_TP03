@@ -12,10 +12,16 @@ local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
 
+local figures = 
+{
+	Thief = 0,
+	King = 1,
+	Warrior = 2
+}
 function Game.init()
 	game = {}
 	game.player = Player.init()
-    game.figure = Figure.init()
+    game.figure = Figure.init(100, 0, 50, 70) 
 	game.world = World.init()	
 	game.mergeMach = MergeMach.init()
 	
@@ -24,7 +30,7 @@ end
 
 function Game.update(game, dt)
 	Player.update(game.player)
-	MergeMach.update(game.mergeMach)
+	MergeMach.update(game.mergeMach, game.figure)
 	Figure.update(game.figure, world.floor, game.player.mouse, dt)
 end
 
@@ -44,7 +50,7 @@ function Game.draw(game)
 	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
 	]]
 	
-	MergeMach.draw(game.mergeMach)
+	MergeMach.draw(game.mergeMach, game.figure)
 	World.draw(game.world)
     Figure.draw(game.figure)
 end

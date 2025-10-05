@@ -7,16 +7,17 @@ local Figure = {}
 
 local initialSpeed = 500;
 
-function Figure.init()
+function Figure.init(x,y,width,height)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(100, 0, 50, 70)
+    figureAux.form = Form.initRectangle(x,y,width,height)
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
 	figureAux.accel = 3000
     figureAux.isBeingGrabbed = false
 	figureAux.isFalling = false;
+    figureAux.isResting = false
 
     return figureAux
 end
@@ -35,11 +36,16 @@ end
 function Figure.update(figure, floor, mouse, dt)
 
     -- loop for each figure	
-    print (figure.grabOffset.x)
+    --print (figure.grabOffset.x)
+    
 	figure.isFalling = not coll.rectOnRect(figure.form, floor) -- If figure isn't colliding with floor, it's falling;
 	if game.figure.isBeingGrabbed then
 		Figure.drag(mouse, figure)
+        figure.isFalling = false
 	end
+    if game.figure.isResting then
+        figure.isFalling = false
+    end
 
     Figure.fall(figure, dt)
 end
