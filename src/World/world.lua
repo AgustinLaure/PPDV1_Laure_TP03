@@ -1,5 +1,5 @@
-local Form = require("Math/form")
-local gs = require("Math/gamespace")
+local Form = require("src/Math/form")
+local gs = require("src/Math/gamespace")
 
 local World = {}
 

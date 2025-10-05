@@ -1,6 +1,6 @@
 
-local Vector = require ("Math/vector")
-local gs = require("Math/gamespace")
+local Vector = require ("src/Math/vector")
+local gs = require("src/Math/gamespace")
 
 local Form = {}
 

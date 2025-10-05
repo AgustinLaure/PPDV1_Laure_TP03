@@ -1,7 +1,7 @@
-local Vector = require ("Math/vector")
-local Form = require("Math/form")
-local gs = require ("Math/gamespace")
-local coll = require ("Game/collisions")
+local Vector = require ("src/Math/vector")
+local Form = require("src/Math/form")
+local gs = require ("src/Math/gamespace")
+local coll = require ("src/Game/collisions")
 
 local Figure = {}
 

@@ -1,9 +1,9 @@
 local MergeMach = {}
 
-Form = require ("Math/form")
-Col = require ("Game/collisions")
-Vector = require ("Math/vector")
-Figure = require ("Figure/figure")
+Form = require ("src/Math/form")
+Col = require ("src/Game/collisions")
+Vector = require ("src/Math/vector")
+Figure = require ("src/Figure/figure")
 
 function MergeMach.init()
 

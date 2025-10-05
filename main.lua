@@ -1,4 +1,4 @@
-local Game = require ("Game/game")
+local Game = require ("src/Game/game")
 
 local game = {}
 

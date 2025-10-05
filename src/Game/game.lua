@@ -1,15 +1,15 @@
 
-local Form = require ("Math/form")
-local Vector = require ("Math/vector")
-local gs = require ("Math/gamespace")
+local Form = require ("src/Math/form")
+local Vector = require ("src/Math/vector")
+local gs = require ("src/Math/gamespace")
 
-local Collisions = require ("Game/collisions")
+local Collisions = require ("src/Game/collisions")
 
-local Player = require ("Player/player")
-local Figure = require ("Figure/figure")
-local World = require ("World/world")
-local Shelf = require ("World/Shelf")
-local MergeMach = require ("MergeMachine/mergeMachine")
+local Player = require ("src/Player/player")
+local Figure = require ("src/Figure/figure")
+local World = require ("src/World/world")
+local Shelf = require ("src/World/Shelf")
+local MergeMach = require ("src/MergeMachine/mergeMachine")
 
 local Game = {}
 
