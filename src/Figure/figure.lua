@@ -7,6 +7,13 @@ local Figure = {}
 
 local initialSpeed = 500;
 
+local sprites = 
+{
+    ["POOR"] = love.graphics.newImage("resources/sprites/figures/warrior.png"),
+    ["KING"] = love.graphics.newImage("resources/sprites/figures/warrior.png"),
+    ["WARRIOR"] = love.graphics.newImage("resources/sprites/figures/warrior.png"),
+}
+
 function Figure.init(type)
     figureAux = {}
 
@@ -19,6 +26,7 @@ function Figure.init(type)
 	figureAux.isFalling = false;
     figureAux.isResting = false
     figureAux.type = type
+    figureAux.sprite = sprites[figureAux.type]
 
     return figureAux
 end
@@ -68,6 +76,7 @@ function Figure.fall(figure, dt)
 end
 
 function Figure.draw(figure)
+    love.graphics.draw(figure.sprite, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y),math.rad(0), 0.5, 0.5, figure.form.width, figure.form.height) --Sprite, x, y, rotation, scaleX, scaleY, width, height
     Form.draw(figure.form)
     love.graphics.setColor(1,0,0)
     love.graphics.print(figure.type, gs.toResX(figure.form.pos.x) + figure.form.width / 2, gs.toResY(figure.form.pos.y) + figure.form.height/2)
