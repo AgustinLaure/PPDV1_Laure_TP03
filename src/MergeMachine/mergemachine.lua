@@ -100,6 +100,7 @@ function MergeMach.createFigure(figures, holder, leftHolder, rightHolder, figure
     newFigure = Figure.init(mergeResult)
     newFigure.form.pos.x = holder.center.x - figureWidth / 2
     newFigure.form.pos.y = holder.center.y - figureHeight / 2
+    newFigure.sprite = Figure.sprites[mergeResult]
     newFigure.type = mergeResult
     newFigure.isResting = true
     
