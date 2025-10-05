@@ -12,6 +12,7 @@ function MergeMach.init()
     auxMergeMach.leftHolder = MergeMach.initHolder(300, 400, 50, 30)
     auxMergeMach.rightHolder = MergeMach.initHolder(400,400, 50, 30)
     auxMergeMach.resultHolder = MergeMach.initHolder(350, 300, 50, 30)
+    hasCreated = false
 
     return auxMergeMach
 end
@@ -37,10 +38,16 @@ function MergeMach.update(mergeMach, figures)
             MergeMach.dropFigure(mergeMach.resultHolder, mergeMach.resultHolder.currentFigure)
         end
 
-        if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure then
+        if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasCreated then
 
             MergeMach.createFigure(figures, mergeMach.resultHolder, 50, 70)
+            mergeMach.hasCreated = true
         end
+        
+        if (not mergeMach.leftHolder.hasFigure or not mergeMach.rightHolder.hasFigure) and not mergeMach.resultHolder.hasFigure then
+            mergeMach.hasCreated = false
+        end
+
 end
 
 function MergeMach.draw(mergeMach) 
