@@ -40,7 +40,7 @@ function MergeMach.update(mergeMach, figures)
 
         if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasCreated then
 
-            MergeMach.createFigure(figures, mergeMach.resultHolder, 50, 70)
+            MergeMach.createFigure(figures, mergeMach.resultHolder, mergeMach.leftHolder, mergeMach.rightHolder, 50, 70)
             mergeMach.hasCreated = true
         end
         
@@ -89,16 +89,23 @@ function MergeMach.dropFigure(holder, figure)
     figure.isResting = false
 end
 
-function MergeMach.createFigure(figures, holder, figureWidth, figureHeight)
-    newFigure = {}
-    newFigure = Figure.init(holder.center.x - figureWidth / 2, holder.center.y - figureHeight / 2, figureWidth, figureHeight)
+function MergeMach.createFigure(figures, holder, leftHolder, rightHolder, figureWidth, figureHeight)
+    mergeResult = Figure.getMergeResult(leftHolder.currentFigure.type, rightHolder.currentFigure.type)
 
+    print(mergeResult)
+
+    if (mergeResult ~= "NONE") then
+    newFigure = {}
+
+    newFigure = Figure.init(holder.center.x - figureWidth / 2, holder.center.y - figureHeight / 2, figureWidth, figureHeight, mergeResult)
     newFigure.isResting = true
     
     Figure.addNewFigure(figures, newFigure)
     
     holder.currentFigure = figures[#figures]
     holder.hasFigure = true
+    end
+
 end
 
 return MergeMach

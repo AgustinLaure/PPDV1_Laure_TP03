@@ -13,17 +13,10 @@ local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
 
-local figuresIndex = 
-{
-	THIEF = 1,
-	KING = 2,
-	WARRIOR = 3
-}
-
 function Game.init()
 	game = {}
 	game.player = Player.init()
-	game.figures = {Figure.init(100, 10, 50, 70), Figure.init(200, 0, 50, 70), Figure.init(300, 0, 50, 70)}
+	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
 	game.world = World.init()	
 	game.Shelf = Shelf.init()
 	game.mergeMach = MergeMach.init()
@@ -35,7 +28,7 @@ function Game.update(game, dt)
 	Player.update(game.player)
 
 	for i=1, #game.figures do
-		Figure.update(game.figures[i], world.floor, game.player.mouse, dt)
+		Figure.update(game, i, dt)
 	end
 
 	MergeMach.update(game.mergeMach, game.figures)
