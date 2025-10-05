@@ -39,11 +39,11 @@ function Figure.update(figure, floor, mouse, dt)
     --print (figure.grabOffset.x)
     
 	figure.isFalling = not coll.rectOnRect(figure.form, floor) -- If figure isn't colliding with floor, it's falling;
-	if game.figure.isBeingGrabbed then
+	if figure.isBeingGrabbed then
 		Figure.drag(mouse, figure)
         figure.isFalling = false
 	end
-    if game.figure.isResting then
+    if figure.isResting then
         figure.isFalling = false
     end
 
@@ -64,6 +64,10 @@ end
 
 function Figure.draw(figure)
     Form.draw(figure.form)
+end
+
+function Figure.addNewFigure(figures, newFigure)
+    table.insert(figures, newFigure)
 end
 
 return Figure

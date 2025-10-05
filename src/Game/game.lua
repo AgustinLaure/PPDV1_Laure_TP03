@@ -12,16 +12,17 @@ local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
 
-local figures = 
+local figuresIndex = 
 {
-	Thief = 0,
-	King = 1,
-	Warrior = 2
+	THIEF = 1,
+	KING = 2,
+	WARRIOR = 3
 }
+
 function Game.init()
 	game = {}
 	game.player = Player.init()
-    game.figure = Figure.init(100, 0, 50, 70) 
+	game.figures = {Figure.init(100, 10, 50, 70), Figure.init(200, 0, 50, 70), Figure.init(300, 0, 50, 70)}
 	game.world = World.init()	
 	game.mergeMach = MergeMach.init()
 	
@@ -30,8 +31,12 @@ end
 
 function Game.update(game, dt)
 	Player.update(game.player)
-	MergeMach.update(game.mergeMach, game.figure)
-	Figure.update(game.figure, world.floor, game.player.mouse, dt)
+
+	for i=1, #game.figures do
+		Figure.update(game.figures[i], world.floor, game.player.mouse, dt)
+	end
+
+	MergeMach.update(game.mergeMach, game.figures)
 end
 
 function Game.draw(game)
@@ -40,7 +45,7 @@ function Game.draw(game)
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
 	end
 	
-	love.graphics.print("speed: " .. game.figure.speed, 0, 0)
+	--love.graphics.print("speed: " .. game.figure.speed, 0, 0)
 	
 	--[[
 	love.graphics.print("mouse res: x: " .. love.mouse.getX() .. " y: " .. love.mouse.getY(), 0, 0)
@@ -50,33 +55,46 @@ function Game.draw(game)
 	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
 	]]
 	
-	MergeMach.draw(game.mergeMach, game.figure)
+	MergeMach.draw(game.mergeMach)
 	World.draw(game.world)
-    Figure.draw(game.figure)
+
+	for i=1, #game.figures do
+		Figure.draw(game.figures[i])
+	end
 end
 
 function Game.mousepressed(game, x, y, button)
 	
-	if not game.player.isGrabbing then
-	
-        if Collisions.pointOnRect(game.player.mouse, game.figure.form) then
-			game.figure.grabOffset.x = game.player.mouse.x - game.figure.form.pos.x
-			game.figure.grabOffset.y = game.player.mouse.y - game.figure.form.pos.y
-		
-			game.figure.isBeingGrabbed = true
+		for i=1, #game.figures do
+			
+			if not game.player.isGrabbing then
+
+			if Collisions.pointOnRect(game.player.mouse, game.figures[i].form) then
+
+			game.figures[i].grabOffset.x = game.player.mouse.x - game.figures[i].form.pos.x
+			game.figures[i].grabOffset.y = game.player.mouse.y - game.figures[i].form.pos.y
+
+			game.figures[i].isBeingGrabbed = true
 			game.player.isGrabbing = true
-        end
-    end
-	
+
+			end
+			
+        	end
+		end
+   
 	Player.mousepressed(game.player, x, y, button)	
 end
 
 function Game.mousereleased(game, x, y, button)
 	Player.mousereleased(game.player, x, y, button)
 	
-	game.figure.isBeingGrabbed = false;
-	game.player.isGrabbing = false;
-	
+	for i=1, #game.figures do
+		if (game.figures[i].isBeingGrabbed) then
+			game.figures[i].isBeingGrabbed = false
+		end
+	end
+
+	game.player.isGrabbing = false;	
 end
 
 return Game

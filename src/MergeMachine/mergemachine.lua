@@ -16,20 +16,31 @@ function MergeMach.init()
     return auxMergeMach
 end
 
-function MergeMach.update(mergeMach, figure)
+function MergeMach.update(mergeMach, figures)
 
-    MergeMach.receiveFigure(mergeMach.leftHolder, figure)
-    MergeMach.receiveFigure(mergeMach.rightHolder, figure)
+    for i=1, #figures do
 
-    if mergeMach.leftHolder.hasFigure and mergeMach.leftHolder.currentFigure.isBeingGrabbed then
-        MergeMach.dropFigure(mergeMach.leftHolder, mergeMach.leftHolder.currentFigure)
+         MergeMach.receiveFigure(mergeMach.leftHolder, figures[i])
+         MergeMach.receiveFigure(mergeMach.rightHolder, figures[i])
+
     end
+        
+        if mergeMach.leftHolder.hasFigure and mergeMach.leftHolder.currentFigure.isBeingGrabbed then
+         MergeMach.dropFigure(mergeMach.leftHolder, mergeMach.leftHolder.currentFigure)
+        end
+         
+        if mergeMach.rightHolder.hasFigure and mergeMach.rightHolder.currentFigure.isBeingGrabbed then
+         MergeMach.dropFigure(mergeMach.rightHolder, mergeMach.rightHolder.currentFigure)
+         end
 
-    if mergeMach.rightHolder.hasFigure and mergeMach.rightHolder.currentFigure.isBeingGrabbed then
-        MergeMach.dropFigure(mergeMach.rightHolder, mergeMach.rightHolder.currentFigure)
-    end
+        if mergeMach.resultHolder.hasFigure and mergeMach.resultHolder.currentFigure.isBeingGrabbed then
+            MergeMach.dropFigure(mergeMach.resultHolder, mergeMach.resultHolder.currentFigure)
+        end
 
-    print (mergeMach.leftHolder.currentFigure.form.pos.x)
+        if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure then
+
+            MergeMach.createFigure(figures, mergeMach.resultHolder, 50, 70)
+        end
 end
 
 function MergeMach.draw(mergeMach) 
@@ -71,11 +82,16 @@ function MergeMach.dropFigure(holder, figure)
     figure.isResting = false
 end
 
-function MergeMach.createFigure(holder, figureWidth, figureHeight)
-    auxFigure = {}
-    auxFigure = Figure.init(holder.area.pos.x - figureWidth / 2, holder.area.pos.y - figureHeight / 2, figureWidth, figureHeight)
+function MergeMach.createFigure(figures, holder, figureWidth, figureHeight)
+    newFigure = {}
+    newFigure = Figure.init(holder.center.x - figureWidth / 2, holder.center.y - figureHeight / 2, figureWidth, figureHeight)
 
+    newFigure.isResting = true
     
+    Figure.addNewFigure(figures, newFigure)
+    
+    holder.currentFigure = figures[#figures]
+    holder.hasFigure = true
 end
 
 return MergeMach
