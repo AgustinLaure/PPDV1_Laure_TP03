@@ -12,17 +12,10 @@ local MergeMach = require ("MergeMachine/mergeMachine")
 
 local Game = {}
 
-local figuresIndex = 
-{
-	THIEF = 1,
-	KING = 2,
-	WARRIOR = 3
-}
-
 function Game.init()
 	game = {}
 	game.player = Player.init()
-	game.figures = {Figure.init(100, 10, 50, 70), Figure.init(200, 0, 50, 70), Figure.init(300, 0, 50, 70)}
+	game.figures = {Figure.init(100, 10, 50, 70, "POOR"), Figure.init(200, 0, 50, 70, "KING"), Figure.init(300, 0, 50, 70, "WARRIOR")}
 	game.world = World.init()	
 	game.mergeMach = MergeMach.init()
 	
