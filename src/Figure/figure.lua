@@ -34,21 +34,21 @@ function Figure.drag(mouse, figure)
     figure.form.pos.y = mouse.y - figure.grabOffset.y
 end
 
-function Figure.update(figure, floor, mouse, dt)
+function Figure.update(game, i, dt)
 
     -- loop for each figure	
     --print (figure.grabOffset.x)
     
-	figure.isFalling = not coll.rectOnRect(figure.form, floor) -- If figure isn't colliding with floor, it's falling;
-	if figure.isBeingGrabbed then
-		Figure.drag(mouse, figure)
-        figure.isFalling = false
+	game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling;
+	if game.figures[i].isBeingGrabbed then
+		Figure.drag(game.player.mouse, game.figures[i])
+        game.figures[i].isFalling = false
 	end
-    if figure.isResting then
-        figure.isFalling = false
+    if game.figures[i].isResting then
+        game.figures[i].isFalling = false
     end
 
-    Figure.fall(figure, dt)
+    Figure.fall(game.figures[i], dt)
 end
 
 function Figure.fall(figure, dt)
@@ -100,7 +100,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         elseif (possFigures["WARRIOR"])then
             resultType = "THIEF"
 
-        elseif (poss)
+        --elseif (poss)
         end
     end
 

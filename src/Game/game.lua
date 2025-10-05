@@ -26,7 +26,7 @@ function Game.update(game, dt)
 	Player.update(game.player)
 
 	for i=1, #game.figures do
-		Figure.update(game.figures[i], world.floor, game.player.mouse, dt)
+		Figure.update(game, i, dt)
 	end
 
 	MergeMach.update(game.mergeMach, game.figures)
