@@ -15,7 +15,7 @@ local Game = {}
 function Game.init()
 	game = {}
 	game.player = Player.init()
-	game.figures = {Figure.init(100, 10, 50, 70, "POOR"), Figure.init(200, 0, 50, 70, "KING"), Figure.init(300, 0, 50, 70, "WARRIOR")}
+	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
 	game.world = World.init()	
 	game.mergeMach = MergeMach.init()
 	

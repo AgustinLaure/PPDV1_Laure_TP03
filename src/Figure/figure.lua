@@ -7,10 +7,10 @@ local Figure = {}
 
 local initialSpeed = 500;
 
-function Figure.init(x,y,width,height, type)
+function Figure.init(type)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(x,y,width,height)
+    figureAux.form = Form.initRectangle(100, 10, 50, 70)
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
