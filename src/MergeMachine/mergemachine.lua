@@ -62,7 +62,7 @@ function MergeMach.initHolder(x, y , width, height)
     auxHolder.area = Form.initRectangle(x,y,width,height)
     auxHolder.center = Vector.initVector2(auxHolder.area.pos.x + auxHolder.area.width / 2, auxHolder.area.pos.y + auxHolder.area.height)
     auxHolder.hasFigure = false
-    auxHolder.currentFigure = Figure.init(0,0,0,0)
+    auxHolder.currentFigure = {}
 
     return auxHolder
 end
