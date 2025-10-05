@@ -16,6 +16,9 @@ function love.draw()
 	Game.draw(game)
 end
 
+function love.keypressed(key)
+	Game.keypressed(key)
+end
 function love.mousepressed( x, y, button)
 	Game.mousepressed(game, x, y, button)
 end

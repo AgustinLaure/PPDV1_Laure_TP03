@@ -11,29 +11,43 @@ local World = require ("src/World/world")
 local Shelves = require ("src/World/shelves")
 local MergeMach = require ("src/MergeMachine/mergemachine")
 
+local Pause = require ("src/Screens/pause")
+local Menu = require ("src/Screens/menu")
+
 local Game = {}
 
 function Game.init()
 	game = {}
+	game.gameState = "Playing"
+	game.prevState = "Playing"
 	game.player = Player.init()
 	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
 	game.world = World.init()	
 	game.Shelves = Shelves.init()
 	game.mergeMach = MergeMach.init()
+	game.pause = Pause.init()
+	game.menu = Menu.init()
 	return game
 end
 
 function Game.update(game, dt)
 	Player.update(game.player)
 
+ 	if game.gameState == "Playing" then
 	for i=1, #game.figures do
 		Figure.update(game, i, dt)
 	end
-
+	love.keypressed(key)
 	MergeMach.update(game.mergeMach, game.figures)
+	elseif game.gameState == "Pause" then
+	love.keypressed(key)
+	end
 end
 
 function Game.draw(game)
+	if game.gameState == "Menu" then
+		Menu.draw(game.menu)
+	elseif game.gameState == "Playing" then
     love.graphics.setColor(1, 1, 1)
 	if game.player.isGrabbing then
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
@@ -56,10 +70,24 @@ function Game.draw(game)
 	for i=1, #game.figures do
 		Figure.draw(game.figures[i])
 	end
+	elseif game.gameState == "Pause" then
+	Pause.draw(game.pause)
+	end
 end
 
 function Game.mousepressed(game, x, y, button)
-	
+	if game.gameState == "Menu" then
+	if Collisions.pointOnRect(game.player.mouse, menu.play) then
+		game.gameState = "Playing"
+	elseif Collisions.pointOnRect(game.player.mouse, menu.settings) then
+		game.prevState = game.gameState
+		game.gameState = "Settings"
+	elseif Collisions.pointOnRect(game.player.mouse, menu.credits) then
+		game.gameState = "Credits"
+	elseif Collisions.pointOnRect(game.player.mouse, menu.quit) then
+		love.event.quit()
+	end
+	elseif game.gameState == "Playing"  then
 		for i=1, #game.figures do
 			
 			if not game.player.isGrabbing then
@@ -78,6 +106,16 @@ function Game.mousepressed(game, x, y, button)
 		end
    
 	Player.mousepressed(game.player, x, y, button)	
+	elseif game.gameState == "Pause" then
+	if Collisions.pointOnRect(game.player.mouse, pause.resume) then
+		game.gameState = "Playing"
+	elseif Collisions.pointOnRect(game.player.mouse, pause.settings) then
+		game.prevState = game.gameState
+		game.gameState = "Settings"
+	elseif Collisions.pointOnRect(game.player.mouse, pause.quit) then
+		game.gameState = "Menu"
+	end
+	end
 end
 
 function Game.mousereleased(game, x, y, button)
@@ -90,6 +128,20 @@ function Game.mousereleased(game, x, y, button)
 	end
 
 	game.player.isGrabbing = false;	
+end
+
+function Game.keypressed(key)
+	if key == "escape" then
+	if game.gameState == "Playing" then
+	game.gameState = "Pause"
+	elseif game.gameState == "Pause" then
+	game.gameState = "Playing"
+	elseif game.gameState == "Settings" then
+	game.gameState = game.prevState
+	elseif game.gameState == "Credits" then
+	game.gameState = "Menu"
+	end
+	end
 end
 
 return Game
