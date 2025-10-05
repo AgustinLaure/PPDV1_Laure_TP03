@@ -13,11 +13,14 @@ local MergeMach = require ("src/MergeMachine/mergemachine")
 
 local Pause = require ("src/Screens/pause")
 local Menu = require ("src/Screens/menu")
+local Settings = require ("src/Screens/settings")
+local Credits = require ("src/Screens/credits")
 
 local Game = {}
 
 function Game.init()
 	game = {}
+
 	game.gameState = "Playing"
 	game.prevState = "Playing"
 	game.player = Player.init()
@@ -25,8 +28,10 @@ function Game.init()
 	game.world = World.init()	
 	game.Shelves = Shelves.init()
 	game.mergeMach = MergeMach.init()
-	game.pause = Pause.init()
+	game.pauseScreen = Pause.init()
 	game.menu = Menu.init()
+	game.settings = Settings.init()
+	game.credits = Credits.init()
 	return game
 end
 
@@ -37,10 +42,7 @@ function Game.update(game, dt)
 	for i=1, #game.figures do
 		Figure.update(game, i, dt)
 	end
-	love.keypressed(key)
 	MergeMach.update(game.mergeMach, game.figures)
-	elseif game.gameState == "Pause" then
-	love.keypressed(key)
 	end
 end
 
@@ -67,11 +69,17 @@ function Game.draw(game)
 	World.draw(game.world)
 	Shelves.draw(game.Shelves)
 	
+	Form.draw(pause.pauseButton)
+
 	for i=1, #game.figures do
 		Figure.draw(game.figures[i])
 	end
 	elseif game.gameState == "Pause" then
-	Pause.draw(game.pause)
+	Pause.draw(game.pauseScreen)
+	elseif game.gameState == "Credits" then
+	Credits.draw(game.credits)
+	elseif game.gameState == "Settings" then
+	Settings.draw(game.settings)
 	end
 end
 
@@ -101,7 +109,9 @@ function Game.mousepressed(game, x, y, button)
 			game.player.isGrabbing = true
 
 			end
-			
+			if Collisions.pointOnRect(game.player.mouse, pause.pauseButton) then
+			game.gameState = "Pause"
+			end
         	end
 		end
    
@@ -113,6 +123,14 @@ function Game.mousepressed(game, x, y, button)
 		game.prevState = game.gameState
 		game.gameState = "Settings"
 	elseif Collisions.pointOnRect(game.player.mouse, pause.quit) then
+		game.gameState = "Menu"
+	end
+	elseif game.gameState == "Settings" then
+	if Collisions.pointOnRect(game.player.mouse, settings.back) then
+		game.gameState = game.prevState
+	end
+	elseif game.gameState == "Credits" then
+	if Collisions.pointOnRect(game.player.mouse, credits.back) then
 		game.gameState = "Menu"
 	end
 	end

@@ -9,7 +9,9 @@ function Pause.init()
 	pause.resume = Form.initRectangle(const.gameWidth / 4 , const.gameHeight / 2, const.gameWidth / 2, 30)
 	pause.settings = Form.initRectangle( const.gameWidth / 4 , const.gameHeight / 2 + 40, const.gameWidth / 2, 30)
 	pause.quit = Form.initRectangle(const.gameWidth / 4 , const.gameHeight / 2 + 80, const.gameWidth / 2, 30)
-	return pause
+    pause.pauseButton = Form.initRectangle(10 , const.gameHeight / 5, 50, 50)
+	
+    return pause
 end
 
 function Pause.draw(pause)
