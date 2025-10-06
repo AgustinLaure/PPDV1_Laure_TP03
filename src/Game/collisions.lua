@@ -43,4 +43,11 @@ function Collisions.pointOnRect(point, rect)
 			point.y > rect.pos.y)	
 end
 
+function Collisions.pointOnCircle(point, circle)
+	dx = point.x - circle.pos.x
+	dy = point.y - circle.pos.y
+
+	return dx*dx + dy*dy < circle.radius * circle.radius
+end
+
 return Collisions

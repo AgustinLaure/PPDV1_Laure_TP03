@@ -2,6 +2,7 @@ local Form = require("src/Math/form")
 local const = require ("src/Config/const")
 local Figure = require("src/Figure/figure")
 local Collisions = require("src/Game/collisions")
+local Vector = require("src/Math/vector")
 
 local Shelves = {}
 
@@ -16,7 +17,17 @@ local shelvesConst =
 	figureWidth = 75,
 	figureHeight = 105,
 	
-	maxFigureAreasPerFloor = 3
+	maxFigureAreasPerFloor = 3,
+
+	scrollUpperPointX = 900,
+	scrollUpperPointY = 100,
+	scrollUpperRadius = 8,
+
+	scrollLowerPointX = 900,
+	scrollLowerPointY = 500,
+	scrollLowerRadius = 8,
+
+	scrollCurrentRadius = 6
 }
 
 function Shelves.init()
@@ -28,6 +39,8 @@ function Shelves.init()
 	for i=1, auxShelves.amount do
 		table.insert(auxShelves.allShelves, Shelves.initShelf(i))
 	end
+	auxShelves.shelvesCopy = Shelves.initShelvesCopy(auxShelves)
+	auxShelves.scroll = Shelves.initVertScroll()
 
 	return auxShelves
 end
@@ -50,6 +63,7 @@ function Shelves.initArea(shelfFloorX, shelfFloorY, shelfFloorWidth, whichArea, 
 	auxArea.form = Form.initRectangle(shelfFloorX + (shelfFloorWidth/4) * whichArea - shelvesConst.figureWidth/2,shelfFloorY - shelvesConst.figureHeight, shelvesConst.figureWidth, shelvesConst.figureHeight)
 	auxArea.supposedFigure = Figure.getTypeFromIndex(whichArea+(whichShelf-1)*3)
 	auxArea.currentFigure = {}
+	auxArea.hasFigure = false
 
 	return auxArea
 end
@@ -57,6 +71,8 @@ function Shelves.update(shelves, figures, player)
 
 	Shelves.receiveFigure(shelves, figures, player)
 	Shelves.dropFigure(shelves,figures, player)
+	Shelves.moveShelves(shelves)
+	Shelves.updateVertScroll(shelves.scroll, player)
 end
 
 function Shelves.draw(shelves)
@@ -67,7 +83,10 @@ function Shelves.draw(shelves)
 			Form.draw(shelves.allShelves[i].figureAreas[j].form)
 		end
 	end
-	--Form.draw(shelves.structureArea)
+
+	Form.drawCircle(shelves.scroll.upperPoint.form)
+	Form.drawCircle(shelves.scroll.lowerPoint.form)
+	Form.drawCircle(shelves.scroll.currentPoint.form)
 end
 
 function Shelves.receiveFigure(shelves, figures, player)
@@ -84,6 +103,7 @@ function Shelves.receiveFigure(shelves, figures, player)
 				figures[i].form.pos.x = shelves.allShelves[whichShelf].figureAreas[whichFigureArea].form.pos.x
 				figures[i].form.pos.y = shelves.allShelves[whichShelf].figureAreas[whichFigureArea].form.pos.y
 				shelves.allShelves[whichShelf].figureAreas[whichFigureArea].currentFigure = figures[i]
+				shelves.allShelves[whichShelf].figureAreas[whichFigureArea].hasFigure = true
 			end
 		end
 	end
@@ -97,10 +117,76 @@ function Shelves.dropFigure(shelves, figures, player)
 
 			if figureOnShelf.isBeingGrabbed then
 				shelves.allShelves[i].figureAreas[j].currentFigure = {}
+				shelves.allShelves[i].figureAreas[j].hasFigure = false
 				figureOnShelf.isResting = false
 			end
 		end
 	end
+end
+
+function Shelves.moveShelves(shelves)
+
+	mover = 40
+	for i=1, shelves.amount do
+		shelves.allShelves[i].floor.pos.y =shelves.shelvesCopy.allShelves[i].floor.pos.y- mover
+
+		for j=1, shelvesConst.maxFigureAreasPerFloor do
+			shelves.allShelves[i].figureAreas[j].form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].form.pos.y-mover
+			if shelves.allShelves[i].figureAreas[j].hasFigure then
+				shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].currentFigure.form.pos.y - mover
+			end
+		end
+	end
+end
+
+function Shelves.initShelvesCopy(shelves)
+	auxCopy = {}
+	auxCopy.allShelves = {}
+	auxCopy.amount = shelves.amount
+
+	for i=1, auxShelves.amount do
+		table.insert(auxCopy.allShelves, Shelves.initShelf(i))
+	end
+
+	return auxCopy
+end
+
+function Shelves.initVertScroll()
+	auxVertScroll = {}
+
+	auxVertScroll.upperPoint= {}
+	auxVertScroll.upperPoint.form= Form.initCircle(shelvesConst.scrollUpperPointX, shelvesConst.scrollUpperPointY, shelvesConst.scrollUpperRadius)
+
+	auxVertScroll.lowerPoint = {}
+	auxVertScroll.lowerPoint.form = Form.initCircle(shelvesConst.scrollLowerPointX, shelvesConst.scrollLowerPointY, shelvesConst.scrollLowerRadius)
+
+	auxVertScroll.currentPoint = {}
+	auxVertScroll.currentPoint.form = Form.initCircle(auxVertScroll.upperPoint.form.pos.x, auxVertScroll.upperPoint.form.pos.y, shelvesConst.scrollCurrentRadius)
+	auxVertScroll.value = 0
+	auxVertScroll.isBeingGrabbed = false
+
+	return auxVertScroll
+end
+
+function Shelves.updateVertScroll(scroll, player)
+
+	scroll.value = (scroll.currentPoint.form.pos.y - scroll.upperPoint.form.pos.y) / (scroll.lowerPoint.form.pos.y-100)
+	
+	if player.isGrabbing and Collisions.pointOnCircle(player.mouse, scroll.currentPoint.form)then
+		scroll.isBeingGrabbed = true
+	end
+
+	if not player.isGrabbing then
+		scroll.isBeingGrabbed = false
+	end
+
+	if scroll.isBeingGrabbed then
+		
+		if scroll.currentPoint.form.pos.y >= scroll.upperPoint.form.pos.y and scroll.currentPoint.form.pos.y <= scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = player.mouse.y
+		end
+	end
+	print(scroll.value)
 end
 
 return Shelves

@@ -14,8 +14,21 @@ function Form.initRectangle(x, y, width, height)
     return auxRect
 end
 
+function Form.initCircle(x,y, radius)
+    auxCircle = {}
+
+    auxCircle.pos = Vector.initVector2(x,y)
+    auxCircle.radius = radius
+
+    return auxCircle
+end
+
 function Form.draw(form)
     love.graphics.rectangle("fill", gs.toResX(form.pos.x), gs.toResY(form.pos.y), gs.toResX(form.width), gs.toResY(form.height))
+end
+
+function Form.drawCircle(form)
+    love.graphics.circle("fill",gs.toResX(form.pos.x), gs.toResY(form.pos.y),form.radius)
 end
 
 return Form
