@@ -381,7 +381,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
             elseif (possFigures["POLITICIAN"]) then
             resultType = "MILLIONAIRE"
             elseif (possFigures["SLAVE"]) then
-            resultType = "PRISIONER"
+            resultType = "PRISONER"
             elseif (possFigures["KING"]) then
             resultType = "POLITICIAN"
             elseif(possFigures["GENERAL"]) then
@@ -394,7 +394,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         if (possFigures["CEO"]) then
             resultType = "EMPLOYEE"
         elseif (possFigures["THIEF"]) then
-            resultType = "PRISIONER"
+            resultType = "PRISONER"
         end
     end
 
