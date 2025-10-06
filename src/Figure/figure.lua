@@ -14,27 +14,27 @@ Figure.sizeY = 105
 
 local sprites = 
 {
-    ["POOR"] = {sprite = love.graphics.newImage("resources/sprites/figures/beggar.png")},
-    ["KING"] = {sprite = love.graphics.newImage("resources/sprites/figures/monarch.png")},
-    ["WARRIOR"] = {sprite = love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["THIEF"] = {sprite =love.graphics.newImage("resources/sprites/figures/thief.png")},
-    ["SLAVE"] = {sprite =love.graphics.newImage("resources/sprites/figures/slave.png")},
-    ["KNIGHT"] = {sprite =love.graphics.newImage("resources/sprites/figures/knight.png")},
-    ["PRISONER"] = {sprite =love.graphics.newImage("resources/sprites/figures/prisoner.png")},
-    ["POLITICIAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/politician.png")},
-    ["SPY"] = {sprite =love.graphics.newImage("resources/sprites/figures/spy.png")},
-    ["VIKING"] = {sprite =love.graphics.newImage("resources/sprites/figures/viking.png")},
-    ["ASSASSIN"] = {sprite =love.graphics.newImage("resources/sprites/figures/assassin.png")},
-    ["GENERAL"] = {sprite =love.graphics.newImage("resources/sprites/figures/general.png")},
-    ["MILLIONAIRE"] = {sprite = love.graphics.newImage("resources/sprites/figures/millionaire.png")},
-    ["DICTATOR"] = {sprite =love.graphics.newImage("resources/sprites/figures/dictator.png")},
-    ["NINJA"] = {sprite =love.graphics.newImage("resources/sprites/figures/ninja.png")},
-    ["CEO"] = {sprite =love.graphics.newImage("resources/sprites/figures/ceo.png")},
-    ["SAMURAI"] = {sprite =love.graphics.newImage("resources/sprites/figures/samurai.png")},
-    ["EMPLOYEE"] = {sprite =love.graphics.newImage("resources/sprites/figures/employee.png")},
-    ["ADMIRAL"] = {sprite =love.graphics.newImage("resources/sprites/figures/captain.png")},
+    ["THE BEGGAR"] = {sprite = love.graphics.newImage("resources/sprites/figures/beggar.png")},
+    ["THE MONARCH"] = {sprite = love.graphics.newImage("resources/sprites/figures/monarch.png")},
+    ["THE WARRIOR"] = {sprite = love.graphics.newImage("resources/sprites/figures/warrior.png")},
+    ["THE THIEF"] = {sprite =love.graphics.newImage("resources/sprites/figures/thief.png")},
+    ["THE SLAVE"] = {sprite =love.graphics.newImage("resources/sprites/figures/slave.png")},
+    ["THE KNIGHT"] = {sprite =love.graphics.newImage("resources/sprites/figures/knight.png")},
+    ["THE PRISONER"] = {sprite =love.graphics.newImage("resources/sprites/figures/prisoner.png")},
+    ["THE POLITICIAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/politician.png")},
+    ["THE SPY"] = {sprite =love.graphics.newImage("resources/sprites/figures/spy.png")},
+    ["THE VIKING"] = {sprite =love.graphics.newImage("resources/sprites/figures/viking.png")},
+    ["THE ASSASSIN"] = {sprite =love.graphics.newImage("resources/sprites/figures/assassin.png")},
+    ["THE GENERAL"] = {sprite =love.graphics.newImage("resources/sprites/figures/general.png")},
+    ["THE MILLIONAIRE"] = {sprite = love.graphics.newImage("resources/sprites/figures/millionaire.png")},
+    ["THE DICTATOR"] = {sprite =love.graphics.newImage("resources/sprites/figures/dictator.png")},
+    ["THE NINJA"] = {sprite =love.graphics.newImage("resources/sprites/figures/ninja.png")},
+    ["THE CEO"] = {sprite =love.graphics.newImage("resources/sprites/figures/ceo.png")},
+    ["THE SAMURAI"] = {sprite =love.graphics.newImage("resources/sprites/figures/samurai.png")},
+    ["THE EMPLOYEE"] = {sprite =love.graphics.newImage("resources/sprites/figures/employee.png")},
+    ["THE CAPTAIN"] = {sprite =love.graphics.newImage("resources/sprites/figures/captain.png")},
     ["PIRATE"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["STUDENT"] = {sprite =love.graphics.newImage("resources/sprites/figures/student.png")},
+    ["THE STUDENT"] = {sprite =love.graphics.newImage("resources/sprites/figures/student.png")},
     ["HITMAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
     ["POLICE"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
     ["STRAWHAT"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
@@ -148,27 +148,27 @@ end
 function Figure.getTypeFromIndex(ind)
     local typeFromIndex =
     {
-        [1] = "POOR",
-        [2] = "KING",
-        [3] = "WARRIOR",
-        [4] = "THIEF",
-        [5] = "SLAVE",
-        [6] = "KNIGHT",
-        [7] = "PRISONER",
-        [8] = "POLITICIAN",
-        [9] = "SPY",
-        [10] = "VIKING",
-        [11] = "ASSASSIN",
-        [12] = "GENERAL",
-        [13] = "MILLIONAIRE",
-        [14] = "DICTATOR",
-        [15] = "NINJA",
-        [16] = "CEO",
-        [17] = "SAMURAI",
-        [18] = "EMPLOYEE",
-        [19] = "ADMIRAL",
+        [1] = "THE BEGGAR",
+        [2] = "THE MONARCH",
+        [3] = "THE WARRIOR",
+        [4] = "THE THIEF",
+        [5] = "THE SLAVE",
+        [6] = "THE KNIGHT",
+        [7] = "THE PRISONER",
+        [8] = "THE POLITICIAN",
+        [9] = "THE SPY",
+        [10] = "THE VIKING",
+        [11] = "THE ASSASSIN",
+        [12] = "THE GENERAL",
+        [13] = "THE MILLIONAIRE",
+        [14] = "THE DICTATOR",
+        [15] = "THE NINJA",
+        [16] = "THE CEO",
+        [17] = "THE SAMURAI",
+        [18] = "THE EMPLOYEE",
+        [19] = "THE CAPTAIN",
         [20] = "PIRATE",
-        [21] = "STUDENT",
+        [21] = "THE STUDENT",
         [22] = "HITMAN",
         [23] = "POLICE",
         [24] = "STRAWHAT",
@@ -207,27 +207,27 @@ end
 function Figure.getIndexFromType(type, maxTypes)
     indexFromType = 
     {
-        ["POOR"]= 1,
-        ["KING"]= 2,
-        ["WARRIOR"]= 3,
-        ["THIEF"] = 4,
-        ["SLAVE"] = 5,
-        ["KNIGHT"] = 6,
-        ["PRISONER"] = 7,
-        ["POLITICIAN"] = 8,
-        ["SPY"] = 9,
-        ["VIKING"] = 10,
-        ["ASSASSIN"] = 11,
-        ["GENERAL"] = 12,
-        ["MILLIONAIRE"] = 13,
-        ["DICTATOR"] = 14,
-        ["NINJA"] = 15,
-        ["CEO"] = 16,
-        ["SAMURAI"] = 17,
-        ["EMPLOYEE"] = 18,
-        ["ADMIRAL"] = 19,
+        ["THE BEGGAR"]= 1,
+        ["THE MONARCH"]= 2,
+        ["THE WARRIOR"]= 3,
+        ["THE THIEF"] = 4,
+        ["THE SLAVE"] = 5,
+        ["THE KNIGHT"] = 6,
+        ["THE PRISONER"] = 7,
+        ["THE POLITICIAN"] = 8,
+        ["THE SPY"] = 9,
+        ["THE VIKING"] = 10,
+        ["THE ASSASSIN"] = 11,
+        ["THE GENERAL"] = 12,
+        ["THE MILLIONAIRE"] = 13,
+        ["THE DICTATOR"] = 14,
+        ["THE NINJA"] = 15,
+        ["THE CEO"] = 16,
+        ["THE SAMURAI"] = 17,
+        ["THE EMPLOYEE"] = 18,
+        ["THE CAPTAIN"] = 19,
         ["PIRATE"] = 20,
-        ["STUDENT"] = 21,
+        ["THE STUDENT"] = 21,
         ["HITMAN"] = 22,
         ["POLICE"] = 23,
         ["STRAWHAT"] = 24,
@@ -268,27 +268,27 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     local possFigures = 
     {
-        ["POOR"]= false,
-        ["KING"]= false,
-        ["WARRIOR"]= false,
-        ["THIEF"] = false,
-        ["SLAVE"] = false,
-        ["KNIGHT"] = false,
-        ["PRISONER"] = false,
-        ["POLITICIAN"] = false,
-        ["SPY"] = false,
-        ["VIKING"] = false,
-        ["ASSASSIN"] = false,
-        ["GENERAL"] = false,
-        ["MILLIONAIRE"] = false,
-        ["DICTATOR"] = false,
-        ["NINJA"] = false,
-        ["CEO"] = false,
-        ["SAMURAI"] = false,
-        ["EMPLOYEE"] = false,
-        ["ADMIRAL"] = false,
+        ["THE BEGGAR"]= false,
+        ["THE MONARCH"]= false,
+        ["THE WARRIOR"]= false,
+        ["THE THIEF"] = false,
+        ["THE SLAVE"] = false,
+        ["THE KNIGHT"] = false,
+        ["THE PRISONER"] = false,
+        ["THE POLITICIAN"] = false,
+        ["THE SPY"] = false,
+        ["THE VIKING"] = false,
+        ["THE ASSASSIN"] = false,
+        ["THE GENERAL"] = false,
+        ["THE MILLIONAIRE"] = false,
+        ["THE DICTATOR"] = false,
+        ["THE NINJA"] = false,
+        ["THE CEO"] = false,
+        ["THE SAMURAI"] = false,
+        ["THE EMPLOYEE"] = false,
+        ["THE CAPTAIN"] = false,
         ["PIRATE"] = false,
-        ["STUDENT"] = false,
+        ["THE STUDENT"] = false,
         ["HITMAN"] = false,
         ["POLICE"] = false,
         ["STRAWHAT"] = false,
@@ -324,162 +324,162 @@ function Figure.getMergeResult(figure1Type, figure2Type)
     possFigures[figure1Type] = true
     possFigures[figure2Type] = true
 
-    if (possFigures["POOR"]) then
+    if (possFigures["THE BEGGAR"]) then
 
-        if(possFigures["EMPLOYEE"])then
-            resultType = "STUDENT"
+        if(possFigures["THE EMPLOYEE"])then
+            resultType = "THE STUDENT"
 
-        elseif (possFigures["WARRIOR"])then
-            resultType = "THIEF"
+        elseif (possFigures["THE WARRIOR"])then
+            resultType = "THE THIEF"
 
-        elseif (possFigures["KING"]) then
-            resultType = "SLAVE"
+        elseif (possFigures["THE MONARCH"]) then
+            resultType = "THE SLAVE"
         end
     end
 
-    if (possFigures["KING"]) then
+    if (possFigures["THE MONARCH"]) then
         
         if (possFigures["PIRATE"]) then
             resultType = "NAKAMA"
-        elseif (possFigures["STUDENT"]) then
+        elseif (possFigures["THE STUDENT"]) then
             resultType = "GENIUS"
-        elseif (possFigures["MILLIONAIRE"]) then
-            resultType = "CEO"
-            elseif (possFigures["THIEF"]) then
-            resultType = "POLITICIAN"
-            elseif (possFigures["POOR"]) then
-            resultType = "SLAVE"
-            elseif (possFigures["WARRIOR"]) then
-            resultType = "KNIGHT"
-            elseif (possFigures["KNIGHT"]) then
-            resultType = "GENERAL"
+        elseif (possFigures["THE MILLIONAIRE"]) then
+            resultType = "THE CEO"
+            elseif (possFigures["THE THIEF"]) then
+            resultType = "THE POLITICIAN"
+            elseif (possFigures["THE BEGGAR"]) then
+            resultType = "THE SLAVE"
+            elseif (possFigures["THE WARRIOR"]) then
+            resultType = "THE KNIGHT"
+            elseif (possFigures["THE KNIGHT"]) then
+            resultType = "THE GENERAL"
         end
     end
 
-    if (possFigures["WARRIOR"]) then
+    if (possFigures["THE WARRIOR"]) then
 
-        if (possFigures["POOR"]) then
-            resultType = "THIEF"
-        elseif (possFigures["SPY"]) then
-            resultType = "ASSASSIN"
-        elseif (possFigures["EMPLOYEE"]) then
+        if (possFigures["THE BEGGAR"]) then
+            resultType = "THE THIEF"
+        elseif (possFigures["THE SPY"]) then
+            resultType = "THE ASSASSIN"
+        elseif (possFigures["THE EMPLOYEE"]) then
             resultType = "POLICE"
         elseif (possFigures["SCIENTIST"]) then
             resultType = "ENGINEER"
-        elseif (possFigures["STUDENT"]) then
+        elseif (possFigures["THE STUDENT"]) then
             resultType = "MARTIAL_ARTIST"
-        elseif (possFigures["THIEF"]) then
-            resultType = "VIKING"
+        elseif (possFigures["THE THIEF"]) then
+            resultType = "THE VIKING"
         end
     end
 
-    if(possFigures["THIEF"]) then
+    if(possFigures["THE THIEF"]) then
         
         if (possFigures["SHERIFF"]) then
             resultType = "COWBOY"
-        elseif (possFigures["ADMIRAL"]) then
+        elseif (possFigures["THE CAPTAIN"]) then
             resultType = "PIRATE"
         elseif (possFigures["GENIUS"]) then
             resultType = "SCAMMER"
-            elseif (possFigures["WARRIOR"]) then
-            resultType = "VIKING"
-            elseif (possFigures["POLITICIAN"]) then
-            resultType = "MILLIONAIRE"
-            elseif (possFigures["SLAVE"]) then
-            resultType = "PRISONER"
-            elseif (possFigures["KING"]) then
-            resultType = "POLITICIAN"
-            elseif(possFigures["GENERAL"]) then
-            resultType = "SPY"
+            elseif (possFigures["THE WARRIOR"]) then
+            resultType = "THE VIKING"
+            elseif (possFigures["THE POLITICIAN"]) then
+            resultType = "THE MILLIONAIRE"
+            elseif (possFigures["THE SLAVE"]) then
+            resultType = "THE PRISONER"
+            elseif (possFigures["THE MONARCH"]) then
+            resultType = "THE POLITICIAN"
+            elseif(possFigures["THE GENERAL"]) then
+            resultType = "THE SPY"
         end
     end
 
-    if(possFigures["SLAVE"]) then
+    if(possFigures["THE SLAVE"]) then
         
-        if (possFigures["CEO"]) then
-            resultType = "EMPLOYEE"
-        elseif (possFigures["THIEF"]) then
-            resultType = "PRISONER"
+        if (possFigures["THE CEO"]) then
+            resultType = "THE EMPLOYEE"
+        elseif (possFigures["THE THIEF"]) then
+            resultType = "THE PRISONER"
         end
     end
 
-    if(possFigures["KNIGHT"]) then
+    if(possFigures["THE KNIGHT"]) then
         
-        if (possFigures["NINJA"]) then
-            resultType = "SAMURAI"
+        if (possFigures["THE NINJA"]) then
+            resultType = "THE SAMURAI"
         elseif (possFigures["MAGE"]) then
             resultType = "SUPERHERO"
-        elseif (possFigures["KING"]) then
-            resultType = "GENERAL"
+        elseif (possFigures["THE MONARCH"]) then
+            resultType = "THE GENERAL"
         end
     end
 
-    if(possFigures["POLITICIAN"]) then
+    if(possFigures["THE POLITICIAN"]) then
         
-        if (possFigures["THIEF"]) then
-            resultType = "MILLIONAIRE"
-        elseif (possFigures["GENERAL"]) then
-            resultType = "DICTATOR"
+        if (possFigures["THE THIEF"]) then
+            resultType = "THE MILLIONAIRE"
+        elseif (possFigures["THE GENERAL"]) then
+            resultType = "THE DICTATOR"
         end
     end
 
-    if(possFigures["SPY"]) then
+    if(possFigures["THE SPY"]) then
         
-        if (possFigures["ASSASSIN"]) then
-            resultType = "NINJA"
-        elseif (possFigures["WARRIOR"]) then
-            resultType = "ASSASSIN"
+        if (possFigures["THE ASSASSIN"]) then
+            resultType = "THE NINJA"
+        elseif (possFigures["THE WARRIOR"]) then
+            resultType = "THE ASSASSIN"
         end
     end
 
-    if(possFigures["VIKING"]) then
+    if(possFigures["THE VIKING"]) then
         
         if (possFigures["SUPERHERO"]) then
             resultType = "THOR"
-        elseif (possFigures["GENERAL"]) then
-            resultType = "ADMIRAL"
+        elseif (possFigures["THE GENERAL"]) then
+            resultType = "THE CAPTAIN"
         end
     end
 
-    if(possFigures["ASSASSIN"]) then
+    if(possFigures["THE ASSASSIN"]) then
         
-        if (possFigures["EMPLOYEE"]) then
+        if (possFigures["THE EMPLOYEE"]) then
             resultType = "HITMAN"
-        elseif (possFigures["SPY"]) then
-            resultType = "NINJA"
+        elseif (possFigures["THE SPY"]) then
+            resultType = "THE NINJA"
         elseif (possFigures["POLICE"]) then
             resultType = "SHERIFF"
         end
     end
 
-    if(possFigures["GENERAL"]) then
+    if(possFigures["THE GENERAL"]) then
         
-        if (possFigures["POLITICIAN"]) then
-            resultType = "DICTATOR"
-        elseif (possFigures["VIKING"]) then
-            resultType = "ADMIRAL"
+        if (possFigures["THE POLITICIAN"]) then
+            resultType = "THE DICTATOR"
+        elseif (possFigures["THE VIKING"]) then
+            resultType = "THE CAPTAIN"
         elseif (possFigures["SCIENTIST"]) then
             resultType = "ENGINEER"
         end
     end
 
-    if(possFigures["MILLIONAIRE"]) then
+    if(possFigures["THE MILLIONAIRE"]) then
         
-        if (possFigures["KING"]) then
-            resultType = "CEO"
+        if (possFigures["THE MONARCH"]) then
+            resultType = "THE CEO"
         elseif (possFigures["SUPERHERO"]) then
             resultType = "BATMAN"
         end
     end
 
-    if(possFigures["DICTATOR"]) then
+    if(possFigures["THE DICTATOR"]) then
         
         if (possFigures["ASTRONAUT"]) then
             resultType = "DARTH_VADER"
         end
     end
 
-    if(possFigures["NINJA"]) then
+    if(possFigures["THE NINJA"]) then
         
         if (possFigures["MAGE"]) then
             resultType = "SHINOBI"
@@ -488,72 +488,72 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         end
     end
 
-    if(possFigures["CEO"]) then
+    if(possFigures["THE CEO"]) then
         
-        if (possFigures["SLAVE"]) then
-            resultType = "EMPLOYEE"
+        if (possFigures["THE SLAVE"]) then
+            resultType = "THE EMPLOYEE"
         elseif (possFigures["HITMAN"]) then
             resultType = "CAPO"
         end
     end
 
-    if(possFigures["SAMURAI"]) then
+    if(possFigures["THE SAMURAI"]) then
         
-        if (possFigures["STUDENT"]) then
+        if (possFigures["THE STUDENT"]) then
             resultType = "SENSEI"
         end
     end
 
-    if(possFigures["EMPLOYEE"]) then
+    if(possFigures["THE EMPLOYEE"]) then
         
-        if (possFigures["POOR"]) then
-            resultType = "STUDENT"
+        if (possFigures["THE BEGGAR"]) then
+            resultType = "THE STUDENT"
         elseif (possFigures["GENIUS"]) then
             resultType = "SCIENTIST"
-        elseif (possFigures["ASSASSIN"]) then
+        elseif (possFigures["THE ASSASSIN"]) then
             resultType = "HITMAN"
-        elseif (possFigures["WARRIOR"]) then
+        elseif (possFigures["THE WARRIOR"]) then
             resultType = "POLICE"
         end
     end
 
-    if(possFigures["ADMIRAL"]) then
+    if(possFigures["THE CAPTAIN"]) then
         
-        if (possFigures["THIEF"]) then
+        if (possFigures["THE THIEF"]) then
             resultType = "PIRATE"
         end
     end
 
     if(possFigures["PIRATE"]) then
         
-        if (possFigures["KING"]) then
+        if (possFigures["THE MONARCH"]) then
             resultType = "STRAWHAT"
         end
     end
 
-    if(possFigures["STUDENT"]) then
+    if(possFigures["THE STUDENT"]) then
         
-        if (possFigures["KING"]) then
+        if (possFigures["THE MONARCH"]) then
             resultType = "GENIUS"
         elseif (possFigures["GENIUS"]) then
             resultType = "MAGE"
-        elseif (possFigures["ASSASSIN"]) then
+        elseif (possFigures["THE ASSASSIN"]) then
             resultType = "HITMAN"
-        elseif (possFigures["WARRIOR"]) then
+        elseif (possFigures["THE WARRIOR"]) then
             resultType = "POLICE"
         end
     end
 
     if(possFigures["HITMAN"]) then
         
-        if (possFigures["CEO"]) then
+        if (possFigures["THE CEO"]) then
             resultType = "CAPO"
         end
     end
 
     if(possFigures["POLICE"]) then
         
-        if (possFigures["ASSASSIN"]) then
+        if (possFigures["THE ASSASSIN"]) then
             resultType = "SHERIFF"
         elseif (possFigures["ROBOT"]) then
             resultType = "ROBOCOP"
@@ -562,13 +562,13 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     if (possFigures["GENIUS"]) then
 
-        if (possFigures["THIEF"]) then
+        if (possFigures["THE THIEF"]) then
             resultType = "SCAMMER"
-        elseif (possFigures["STUDENT"]) then
+        elseif (possFigures["THE STUDENT"]) then
             resultType = "MAGE"
-        elseif (possFigures["EMPLOYEE"]) then
+        elseif (possFigures["THE EMPLOYEE"]) then
             resultType = "SCIENTIST"
-        elseif (possFigures["DICTATOR"]) then
+        elseif (possFigures["THE DICTATOR"]) then
             resultType = "VILLAIN"
         elseif (possFigures["ENGINEER"]) then
             resultType = "ROBOT"
@@ -593,9 +593,9 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         
         if (possFigures["SCAMMER"]) then
             resultType = "ASTROLOGER"
-        elseif (possFigures["NINJA"]) then
+        elseif (possFigures["THE NINJA"]) then
             resultType = "SHINOBI"
-        elseif (possFigures["KNIGHT"]) then
+        elseif (possFigures["THE KNIGHT"]) then
             resultType = "SUPERHERO"
         elseif (possFigures["MARTIAL_ARTIST"]) then
             resultType = "MONK"
@@ -604,7 +604,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     if(possFigures["SCIENTIST"]) then
         
-        if (possFigures["GENERAL"]) then
+        if (possFigures["THE GENERAL"]) then
             resultType = "ENGINEER"
         end
     end
@@ -632,9 +632,9 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     if(possFigures["SUPERHERO"]) then
         
-        if (possFigures["VIKING"]) then
+        if (possFigures["THE VIKING"]) then
             resultType = "THOR"
-        elseif (possFigures["MILLIONAIRE"]) then
+        elseif (possFigures["THE MILLIONAIRE"]) then
             resultType = "BATMAN"
         elseif (possFigures["ALIEN"]) then
             resultType = "SUPERMAN"
@@ -651,12 +651,12 @@ function Figure.getMergeResult(figure1Type, figure2Type)
     end
 
 
-    if(possFigures["GENERAL"]) then
+    if(possFigures["THE GENERAL"]) then
         
-        if (possFigures["POLITICIAN"]) then
-            resultType = "DICTATOR"
-        elseif (possFigures["VIKING"]) then
-            resultType = "ADMIRAL"
+        if (possFigures["THE POLITICIAN"]) then
+            resultType = "THE DICTATOR"
+        elseif (possFigures["THE VIKING"]) then
+            resultType = "THE CAPTAIN"
         elseif (possFigures["SCIENTIST"]) then
             resultType = "ENGINEER"
         end
@@ -664,7 +664,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     if(possFigures["ASTRONAUT"]) then
         
-        if (possFigures["DICTATOR"]) then
+        if (possFigures["THE DICTATOR"]) then
             resultType = "DARTH_VADER"
         elseif (possFigures["COWBOY"]) then
             resultType = "BOUNTY_HUNTER"

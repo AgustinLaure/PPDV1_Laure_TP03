@@ -2,6 +2,7 @@
 local Form = require ("src/Math/form")
 local Vector = require ("src/Math/vector")
 local gs = require ("src/Math/gamespace")
+local const = require ("src/Config/const")
 
 local Collisions = require ("src/Game/collisions")
 
@@ -21,10 +22,12 @@ local Game = {}
 function Game.init()
 	game = {}
 
+	love.window.setMode(const.gameResWidth, const.gameResHeight)
+	love.window.setFullscreen(false)
 	game.gameState = "Menu"
 	game.prevState = "Menu"
 	game.player = Player.init()
-	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
+	game.figures = {Figure.init("THE BEGGAR"), Figure.init("THE MONARCH"), Figure.init("THE WARRIOR")}
 	game.world = World.init()	
 	game.shelves = Shelves.init()
 	game.mergeMach = MergeMach.init()
