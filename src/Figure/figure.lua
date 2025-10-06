@@ -101,15 +101,17 @@ function Figure.drag(mouse, figure)
 end
 
 function Figure.update(game, i, dt)
-  
-	game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling
+    
+    if not game.figures[i].isResting then
+        game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling
+    else
+        game.figures[i].isFalling = false
+    end
+    
 	if game.figures[i].isBeingGrabbed then
 		Figure.drag(game.player.mouse, game.figures[i])
         game.figures[i].isFalling = false
 	end
-    if game.figures[i].isResting then
-        game.figures[i].isFalling = false
-    end
 
     Figure.fall(game.figures[i], dt)
 end
@@ -195,6 +197,65 @@ function Figure.getTypeFromIndex(ind)
     }
 
     return typeFromIndex[ind]
+end
+
+function Figure.getIndexFromType(type, maxTypes)
+    indexFromType = 
+    {
+        ["POOR"]= 1,
+        ["KING"]= 2,
+        ["WARRIOR"]= 3,
+        ["THIEF"] = 4,
+        ["SLAVE"] = 5,
+        ["KNIGHT"] = 6,
+        ["PRISONER"] = 7,
+        ["POLITICIAN"] = 8,
+        ["SPY"] = 9,
+        ["VIKING"] = 10,
+        ["ASSASSIN"] = 11,
+        ["GENERAL"] = 12,
+        ["MILLIONAIRE"] = 13,
+        ["DICTATOR"] = 14,
+        ["NINJA"] = 15,
+        ["CEO"] = 16,
+        ["SAMURAI"] = 17,
+        ["EMPLOYEE"] = 18,
+        ["ADMIRAL"] = 19,
+        ["PIRATE"] = 20,
+        ["STUDENT"] = 21,
+        ["HITMAN"] = 22,
+        ["POLICE"] = 23,
+        ["STRAWHAT"] = 24,
+        ["GENIUS"] = 25,
+        ["CAPO"] = 26,
+        ["SENSEI"] = 27,
+        ["SHERIFF"] = 28,
+        ["MARTIAL_ARTIST"] = 29,
+        ["COWBOY"] = 30,
+        ["SCAMMER"] = 31,
+        ["MAGE"] = 32,
+        ["SCIENTIST"] = 33,
+        ["VILLAIN"] = 34,
+        ["ASTROLOGER"] = 35,
+        ["SHINOBI"] = 36,
+        ["SUPERHERO"] = 37,
+        ["MONK"] = 38,
+        ["ENGINEER"] = 39,
+        ["ASTRONAUT"] = 40,
+        ["BATMAN"] = 41,
+        ["IRONMAN"] = 42,
+        ["ROBOT"] = 43,
+        ["BOUNTY_HUNTER"] = 44,
+        ["THOR"] = 45,
+        ["ROBOCOP"] = 46,
+        ["RAIDEN"] = 47,
+        ["DARTH_VADER"] = 48,
+        ["ALIEN"] = 49,
+        ["SUPERMAN"] = 50,
+        ["GOKU"] = 51,
+    }
+
+    return indexFromType[type]
 end
 
 function Figure.getMergeResult(figure1Type, figure2Type)
