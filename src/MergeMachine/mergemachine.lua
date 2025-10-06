@@ -101,7 +101,6 @@ function MergeMach.createFigure(figures, mergeMach, figureWidth, figureHeight)
         end
     end
     
-    print(canCreateFigure)
     if (canCreateFigure) then
     newFigure = {}
 

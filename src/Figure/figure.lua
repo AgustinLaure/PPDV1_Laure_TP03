@@ -80,7 +80,6 @@ function Figure.init(type)
 	figureAux.isFalling = false;
     figureAux.isResting = false
     figureAux.type = type
-    print(type)
     figureAux.sprite = Figure.sprites[figureAux.type].sprite
 
     return figureAux

@@ -26,7 +26,7 @@ function Game.init()
 	game.player = Player.init()
 	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
 	game.world = World.init()	
-	game.Shelves = Shelves.init()
+	game.shelves = Shelves.init()
 	game.mergeMach = MergeMach.init()
 	game.pauseScreen = Pause.init()
 	game.menu = Menu.init()
@@ -43,6 +43,7 @@ function Game.update(game, dt)
 		Figure.update(game, i, dt)
 	end
 	MergeMach.update(game.mergeMach, game.figures)
+	Shelves.update(game.shelves, game.figures, game.player)
 	end
 end
 
@@ -66,8 +67,8 @@ function Game.draw(game)
 	]]
 	
 	MergeMach.draw(game.mergeMach)
+	Shelves.draw(game.shelves)
 	World.draw(game.world)
-	Shelves.draw(game.Shelves)
 	
 	Form.draw(pause.pauseButton)
 
