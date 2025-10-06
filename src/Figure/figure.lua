@@ -107,7 +107,6 @@ function Figure.update(game, i, dt)
     if not game.figures[i].isResting then
         game.figures[i].isFalling = not coll.rectOnRect(game.figures[i].form, game.world.floor) -- If figure isn't colliding with floor, it's falling
     else
-        game.fellsound:play()
         game.figures[i].isFalling = false
     end
     
@@ -125,6 +124,7 @@ function Figure.fall(figure, dt)
 		figure.speed = figure.speed + figure.accel * dt
 		figure.dir.y = 1
 		figure.form.pos.y = figure.form.pos.y + figure.dir.y * figure.speed * dt
+        game.fellsound:play()
     else 
 		figure.speed = initialSpeed
 	end
