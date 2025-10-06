@@ -32,12 +32,16 @@ function Game.init()
 	game.menu = Menu.init()
 	game.settings = Settings.init()
 	game.credits = Credits.init()
+	game.music = love.audio.newSource("resources/sounds/gameMusic.mp3", "static")
+	game.fellsound = love.audio.newSource("resources/sounds/blockFall.mp3", "static")
 	return game
 end
 
 function Game.update(game, dt)
 	Player.update(game.player)
-
+	game.fellsound:setVolume(settings.volume.value/100)
+	game.music:setVolume(settings.volume.value/100)
+	game.music:play()
  	if game.gameState == "Playing" then
 	for i=1, #game.figures do
 		Figure.update(game, i, dt)
