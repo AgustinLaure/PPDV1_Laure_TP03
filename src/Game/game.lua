@@ -57,6 +57,7 @@ function Game.draw(game)
 	if game.gameState == "Menu" then
 		Menu.draw(game.menu)
 	elseif game.gameState == "Playing" then
+    love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
     love.graphics.setColor(1, 1, 1)
 	if game.player.isGrabbing then
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)

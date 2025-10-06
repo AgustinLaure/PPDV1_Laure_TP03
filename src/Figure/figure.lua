@@ -3,6 +3,7 @@ local Form = require("src/Math/form")
 local gs = require ("src/Math/gamespace")
 local coll = require ("src/Game/collisions")
 local Sprite = require ("src/Textures/sprites")
+local const = require ("src/Config/const")
 
 local Figure = {}
 
@@ -133,9 +134,11 @@ end
 function Figure.draw(figure)
 	Sprite.drawFigure(figure)
     --Form.draw(figure.form)
-    love.graphics.setColor(1,0,0)
-    love.graphics.print(figure.type, gs.toResX(figure.form.pos.x) + figure.form.width / 2, gs.toResY(figure.form.pos.y) + figure.form.height/2)
-    love.graphics.setColor(1,1,1)
+	if (figure.isBeingGrabbed) then
+		love.graphics.setColor(0,0,0)
+		love.graphics.printf(figure.type, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y), gs.toResX(const.figSizeX), "center")
+    end
+	love.graphics.setColor(1,1,1)
 end
 
 function Figure.addNewFigure(figures, newFigure)

@@ -3,12 +3,13 @@ local const = require ("src/Config/const")
 local Figure = require("src/Figure/figure")
 local Collisions = require("src/Game/collisions")
 local Vector = require("src/Math/vector")
+local Sprite = require ("src/Textures/sprites")
 
 local Shelves = {}
 
 local shelvesConst = 
 {
-	floorPosX = 500,
+	floorPosX = 700,
 	floorPosY = 140,
 	floorWidth = 350,
 	floorHeight = 20,
@@ -19,11 +20,11 @@ local shelvesConst =
 	
 	maxFigureAreasPerFloor = 3,
 
-	scrollUpperPointX = 900,
+	scrollUpperPointX = 1055,
 	scrollUpperPointY = 100,
 	scrollUpperRadius = 8,
 
-	scrollLowerPointX = 900,
+	scrollLowerPointX = 1055,
 	scrollLowerPointY = 500,
 	scrollLowerRadius = 8,
 
@@ -78,10 +79,10 @@ end
 
 function Shelves.draw(shelves)
 	for i=1, shelves.amount do
-		Form.draw(shelves.allShelves[i].floor)
+		Sprite.drawShelf(shelves.allShelves[i].floor)
 		for j = 1,shelvesConst.maxFigureAreasPerFloor do
 			
-			Form.draw(shelves.allShelves[i].figureAreas[j].form)
+			--Form.draw(shelves.allShelves[i].figureAreas[j].form)
 		end
 	end
 
