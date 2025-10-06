@@ -93,7 +93,8 @@ function Figure.drag(mouse, figure)
     else 
         figure.form.pos.x = mouse.x - figure.grabOffset.x
     end
-    if (mouse.y - figure.grabOffset.y) + figure.form.height > world.floor.pos.y then
+    if (mouse.y - figure.grabOffset.y) + figure.form.height > world.floor.pos.y 
+        and (mouse.x - figure.grabOffset.x) +figure.form.width < world.floor.pos.x + world.floor.width + figure.form.width then
         figure.form.pos.y = world.floor.pos.y - figure.form.height
     else
     figure.form.pos.y = mouse.y - figure.grabOffset.y

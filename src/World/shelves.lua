@@ -35,7 +35,8 @@ function Shelves.init()
 	auxShelves.allShelves = {}
 	auxShelves.amount = math.ceil(51/3)
 	auxShelves.shelvesInScreen = 3
-	auxShelves.structureArea = Form.initRectangle(shelvesConst.floorPosX,shelvesConst.floorPosY-shelvesConst.figureHeight, shelvesConst.floorWidth, (shelvesConst.floorHeight + shelvesConst.figureHeight+shelvesConst.distanceBetweenFloor)* auxShelves.shelvesInScreen)
+	--auxShelves.structureArea = Form.initRectangle(shelvesConst.floorPosX,shelvesConst.floorPosY-shelvesConst.figureHeight, shelvesConst.floorWidth, (shelvesConst.floorHeight + shelvesConst.figureHeight+shelvesConst.distanceBetweenFloor)* auxShelves.shelvesInScreen)
+	auxShelves.structureArea = Form.initRectangle(shelvesConst.floorPosX,shelvesConst.floorPosY-shelvesConst.figureHeight, shelvesConst.floorWidth, const.gameHeight)
 	for i=1, auxShelves.amount do
 		table.insert(auxShelves.allShelves, Shelves.initShelf(i))
 	end
@@ -93,7 +94,7 @@ function Shelves.receiveFigure(shelves, figures, player)
 		figureCenter = {x=figures[i].form.pos.x + figures[i].form.width/2, y = figures[i].form.pos.y + figures[i].form.height/2}
 		if Collisions.pointOnRect(figureCenter, shelves.structureArea) then
 
-			if figures[i].isFalling then
+			if figures[i].isFalling or not figures[i].isBeingGrabbed then
 				figures[i].isResting = true
 				typeToIndex = Figure.getIndexFromType(figures[i].type)
 				whichShelf = math.ceil(typeToIndex/ shelvesConst.maxFigureAreasPerFloor)
