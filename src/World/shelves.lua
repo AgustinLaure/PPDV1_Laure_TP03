@@ -84,8 +84,6 @@ function Shelves.draw(shelves)
 		end
 	end
 
-	Form.drawCircle(shelves.scroll.upperPoint.form)
-	Form.drawCircle(shelves.scroll.lowerPoint.form)
 	Form.drawCircle(shelves.scroll.currentPoint.form)
 end
 

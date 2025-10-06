@@ -11,7 +11,7 @@ function Settings.init()
 	settings.volume = Form.initRectangle((const.gameWidth/4) *3, const.gameHeight/2,20,20)
 	settings.volume.isBeingGrabbed = false
 	settings.volume.grabOffset = Vector.initVector2(0,0)
-	settings.volume.value = 0
+	settings.volume.value = 100
 	return pause
 end
 
