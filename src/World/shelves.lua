@@ -126,14 +126,15 @@ end
 
 function Shelves.moveShelves(shelves)
 
-	mover = 40
+	mover = 0
 	for i=1, shelves.amount do
 		shelves.allShelves[i].floor.pos.y =shelves.shelvesCopy.allShelves[i].floor.pos.y- mover
 
 		for j=1, shelvesConst.maxFigureAreasPerFloor do
 			shelves.allShelves[i].figureAreas[j].form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].form.pos.y-mover
 			if shelves.allShelves[i].figureAreas[j].hasFigure then
-				shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].currentFigure.form.pos.y - mover
+				print(shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y)
+				shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].form.pos.y - mover
 			end
 		end
 	end
