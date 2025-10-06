@@ -44,6 +44,8 @@ function Game.update(game, dt)
 	end
 	MergeMach.update(game.mergeMach, game.figures)
 	Shelves.update(game.shelves, game.figures, game.player)
+	elseif game.gameState == "Settings" then
+		Settings.update(game.settings)
 	end
 end
 
@@ -81,6 +83,9 @@ function Game.draw(game)
 	Credits.draw(game.credits)
 	elseif game.gameState == "Settings" then
 	Settings.draw(game.settings)
+	if game.player.isGrabbing then
+		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
+	end
 	end
 end
 
@@ -130,6 +135,15 @@ function Game.mousepressed(game, x, y, button)
 	if Collisions.pointOnRect(game.player.mouse, settings.back) then
 		game.gameState = game.prevState
 	end
+	if Collisions.pointOnRect(game.player.mouse, settings.volume) then
+		
+		settings.volume.grabOffset.x = game.player.mouse.x - settings.volume.pos.x
+		settings.volume.grabOffset.y = game.player.mouse.y - settings.volume.pos.y
+		
+		settings.volume.isBeingGrabbed = true
+		game.player.isGrabbing = true
+	end	
+	Settings.mousepressed(game.player, x, y, button)
 	elseif game.gameState == "Credits" then
 	if Collisions.pointOnRect(game.player.mouse, credits.back) then
 		game.gameState = "Menu"
@@ -145,6 +159,8 @@ function Game.mousereleased(game, x, y, button)
 			game.figures[i].isBeingGrabbed = false
 		end
 	end
+
+	settings.volume.isBeingGrabbed = false
 
 	game.player.isGrabbing = false;	
 end
