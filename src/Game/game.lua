@@ -21,8 +21,8 @@ local Game = {}
 function Game.init()
 	game = {}
 
-	game.gameState = "Playing"
-	game.prevState = "Playing"
+	game.gameState = "Menu"
+	game.prevState = "Menu"
 	game.player = Player.init()
 	game.figures = {Figure.init("POOR"), Figure.init("KING"), Figure.init("WARRIOR")}
 	game.world = World.init()	
