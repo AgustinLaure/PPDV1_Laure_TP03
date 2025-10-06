@@ -126,7 +126,7 @@ end
 
 function Shelves.moveShelves(shelves)
 
-	mover = 0
+	mover = (shelvesConst.distanceBetweenFloor + shelvesConst.figureHeight + shelvesConst.floorHeight) * (shelves.amount-3) *  shelves.scroll.value
 	for i=1, shelves.amount do
 		shelves.allShelves[i].floor.pos.y =shelves.shelvesCopy.allShelves[i].floor.pos.y- mover
 
@@ -186,8 +186,13 @@ function Shelves.updateVertScroll(scroll, player)
 		if scroll.currentPoint.form.pos.y >= scroll.upperPoint.form.pos.y and scroll.currentPoint.form.pos.y <= scroll.lowerPoint.form.pos.y then
 			scroll.currentPoint.form.pos.y = player.mouse.y
 		end
+		if scroll.currentPoint.form.pos.y < scroll.upperPoint.form.pos.y then --fix position
+			scroll.currentPoint.form.pos.y = scroll.upperPoint.form.pos.y
+		end
+		if scroll.currentPoint.form.pos.y > scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = scroll.lowerPoint.form.pos.y
+		end
 	end
-	print(scroll.value)
 end
 
 return Shelves
