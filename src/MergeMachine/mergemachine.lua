@@ -12,7 +12,8 @@ function MergeMach.init()
     auxMergeMach.leftHolder = MergeMach.initHolder(300, 400, 50, 30)
     auxMergeMach.rightHolder = MergeMach.initHolder(400,400, 50, 30)
     auxMergeMach.resultHolder = MergeMach.initHolder(350, 300, 50, 30)
-    hasCreated = false
+    auxMergeMach.hasJustCreatedFigure = false
+    auxMergeMach.createdFigures = {}
 
     return auxMergeMach
 end
@@ -38,14 +39,14 @@ function MergeMach.update(mergeMach, figures)
             MergeMach.dropFigure(mergeMach.resultHolder, mergeMach.resultHolder.currentFigure)
         end
 
-        if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasCreated then
+        if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasJustCreatedFigure then
 
-            MergeMach.createFigure(figures, mergeMach.resultHolder, mergeMach.leftHolder, mergeMach.rightHolder, Figure.sizeX, Figure.sizeY)
-            mergeMach.hasCreated = true
+            MergeMach.createFigure(figures, mergeMach, Figure.sizeX, Figure.sizeY)
+            mergeMach.hasJustCreatedFigure = true
         end
         
         if (not mergeMach.leftHolder.hasFigure or not mergeMach.rightHolder.hasFigure) and not mergeMach.resultHolder.hasFigure then
-            mergeMach.hasCreated = false
+            mergeMach.hasJustCreatedFigure = false
         end
 
 end
@@ -89,25 +90,34 @@ function MergeMach.dropFigure(holder, figure)
     figure.isResting = false
 end
 
-function MergeMach.createFigure(figures, holder, leftHolder, rightHolder, figureWidth, figureHeight)
-    mergeResult = Figure.getMergeResult(leftHolder.currentFigure.type, rightHolder.currentFigure.type)
+function MergeMach.createFigure(figures, mergeMach, figureWidth, figureHeight)
+    mergeResult = Figure.getMergeResult(mergeMach.leftHolder.currentFigure.type, mergeMach.rightHolder.currentFigure.type)
 
-    print(mergeResult)
-
-    if (mergeResult ~= "NONE") then
+    canCreateFigure = true
+    canCreateFigure = mergeResult ~= "NONE"
+    for i=1, #mergeMach.createdFigures do
+        if mergeMach.createdFigures[i] == mergeResult then
+            canCreateFigure = false
+        end
+    end
+    
+    print(canCreateFigure)
+    if (canCreateFigure) then
     newFigure = {}
 
     newFigure = Figure.init(mergeResult)
-    newFigure.form.pos.x = holder.center.x - figureWidth / 2
-    newFigure.form.pos.y = holder.center.y - figureHeight / 2
+    newFigure.form.pos.x = mergeMach.resultHolder.center.x - figureWidth / 2
+    newFigure.form.pos.y = mergeMach.resultHolder.center.y - figureHeight / 2
     newFigure.sprite = Figure.sprites[mergeResult].sprite
     newFigure.type = mergeResult
     newFigure.isResting = true
     
     Figure.addNewFigure(figures, newFigure)
     
-    holder.currentFigure = figures[#figures]
-    holder.hasFigure = true
+    
+    mergeMach.resultHolder.currentFigure = figures[#figures]
+   mergeMach.resultHolder.hasFigure = true
+    table.insert(mergeMach.createdFigures, mergeResult)
     end
 
 end
