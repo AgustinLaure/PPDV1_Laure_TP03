@@ -84,7 +84,7 @@ function Game.draw(game)
 	Form.draw(pause.pauseButton)
 
 	for i=1, #game.figures do
-		Figure.draw(game.figures[i])
+		Figure.draw(game.figures[i], game.player)
 	end
 	elseif game.gameState == "Pause" then
 	Pause.draw(game.pauseScreen)
