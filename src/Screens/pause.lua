@@ -6,16 +6,16 @@ local Pause = {}
 function Pause.init()
 
 	pause = {}
-	pause.resume = Form.initRectangle(const.gameWidth / 4 , const.gameHeight / 2, const.gameWidth / 2, 30)
-	pause.settings = Form.initRectangle( const.gameWidth / 4 , const.gameHeight / 2 + 40, const.gameWidth / 2, 30)
-	pause.quit = Form.initRectangle(const.gameWidth / 4 , const.gameHeight / 2 + 80, const.gameWidth / 2, 30)
+	pause.resume = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2, const.gameResWidth / 2, 30)
+	pause.settings = Form.initRectangle( const.gameResWidth / 4 , const.gameResHeight / 2 + 40, const.gameResWidth / 2, 30)
+	pause.quit = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2 + 80, const.gameResWidth / 2, 30)
     pause.pauseButton = Form.initRectangle(10 , 20, 50, 50)
 	
     return pause
 end
 
 function Pause.draw(pause)
-    love.graphics.printf("paused", 50, const.gameHeight - (const.gameHeight/4) * 3, const.gameWidth, "center")
+    love.graphics.printf("paused", 50, const.gameResHeight - (const.gameResHeight/4) * 3, const.gameResWidth, "center")
     Form.draw(pause.resume)
 	Form.draw(pause.settings)
 	Form.draw(pause.quit)
