@@ -142,10 +142,10 @@ function Figure.fall(figure, dt)
 	--figure.form.pos.x = figure.form.pos.x + figure.dir.x * figure.speed * dt
 end
 
-function Figure.draw(figure)
+function Figure.draw(figure, player)
 	Sprite.drawFigure(figure)
     --Form.draw(figure.form)
-	if (figure.isBeingGrabbed) then
+	if (coll.pointOnRect(player.mouse, figure.form)) then
 		love.graphics.setColor(0,0,0)
 		love.graphics.printf(figure.type, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y), gs.toResX(const.figSizeX), "center")
     end
