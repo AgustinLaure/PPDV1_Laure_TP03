@@ -213,7 +213,7 @@ end
 
 function Shelves.scrollMouse(scroll, y)
 		if scroll.currentPoint.form.pos.y >= scroll.upperPoint.form.pos.y and scroll.currentPoint.form.pos.y <= scroll.lowerPoint.form.pos.y then
-			scroll.currentPoint.form.pos.y = scroll.currentPoint.form.pos.y - y * 3
+			scroll.currentPoint.form.pos.y = scroll.currentPoint.form.pos.y - y * 8
 		end
 		if scroll.currentPoint.form.pos.y < scroll.upperPoint.form.pos.y then --fix position
 			scroll.currentPoint.form.pos.y = scroll.upperPoint.form.pos.y
