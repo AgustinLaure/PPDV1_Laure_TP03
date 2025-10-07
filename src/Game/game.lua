@@ -152,6 +152,70 @@ function Game.mousepressed(game, x, y, button)
 		settings.volume.isBeingGrabbed = true
 		game.player.isGrabbing = true
 	end	
+	if Collisions.pointOnRect(game.player.mouse,settings.resIncrease) then
+		if settings.resValue<6 then
+			settings.resValue = settings.resValue+1
+		end
+		if settings.resValue == 1 then
+			settings.resWidth = 960
+			settings.resHeight = 540
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 2 then
+			settings.resWidth = 1280
+			settings.resHeight = 720
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 3 then
+			settings.resWidth = 1600
+			settings.resHeight = 900
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 4 then
+			settings.resWidth = 1920
+			settings.resHeight = 1080
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 5 then
+			settings.resWidth = 2560
+			settings.resHeight = 1440
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		end
+		love.window.setMode(settings.resWidth,settings.resHeight)
+	end
+	if Collisions.pointOnRect(game.player.mouse,settings.resDecrease) then
+		if settings.resValue>1 then
+			settings.resValue = settings.resValue-1
+		end
+		if settings.resValue == 1 then
+			settings.resWidth = 960
+			settings.resHeight = 540
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 2 then
+			settings.resWidth = 1280
+			settings.resHeight = 720
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 3 then
+			settings.resWidth = 1600
+			settings.resHeight = 900
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 4 then
+			settings.resWidth = 1920
+			settings.resHeight = 1080
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		elseif settings.resValue == 5 then
+			settings.resWidth = 2560
+			settings.resHeight = 1440
+			game.gameResWidth = settings.resWidth
+			game.gameResHeight = settings.resHeight
+		end
+		love.window.setMode(settings.resWidth,settings.resHeight)
+	end
 	Settings.mousepressed(game.player, x, y, button)
 	elseif game.gameState == "Credits" then
 	if Collisions.pointOnRect(game.player.mouse, credits.back) then
@@ -162,7 +226,8 @@ end
 
 function Game.mousereleased(game, x, y, button)
 	Player.mousereleased(game.player, x, y, button)
-	
+	Settings.mousereleased(game.player, x, y, button)
+
 	for i=1, #game.figures do
 		if (game.figures[i].isBeingGrabbed) then
 			game.figures[i].isBeingGrabbed = false

@@ -7,10 +7,10 @@ local Menu = {}
 function Menu.init()
 
 	menu = {}
-	menu.play = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2, const.gameResWidth / 2, 30)
-	menu.settings = Form.initRectangle( const.gameResWidth * 0.25 , const.gameResHeight / 2 + 40, const.gameResWidth / 2, 30)
-	menu.credits = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 80, const.gameResWidth / 2, 30)
-    menu.quit = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 120, const.gameResWidth / 2, 30)
+	menu.play = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2, const.gameResWidth / 3, 30)
+	menu.settings = Form.initRectangle( const.gameResWidth * 0.25 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
+	menu.credits = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 80, const.gameResWidth / 3, 30)
+    menu.quit = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 120, const.gameResWidth / 3, 30)
 	return menu
 end
 

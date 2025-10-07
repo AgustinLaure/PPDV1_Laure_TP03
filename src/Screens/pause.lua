@@ -6,9 +6,9 @@ local Pause = {}
 function Pause.init()
 
 	pause = {}
-	pause.resume = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2, const.gameResWidth / 2, 30)
-	pause.settings = Form.initRectangle( const.gameResWidth / 4 , const.gameResHeight / 2 + 40, const.gameResWidth / 2, 30)
-	pause.quit = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2 + 80, const.gameResWidth / 2, 30)
+	pause.resume = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2, const.gameResWidth / 3, 30)
+	pause.settings = Form.initRectangle( const.gameResWidth / 4 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
+	pause.quit = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2 + 80, const.gameResWidth / 3, 30)
     pause.pauseButton = Form.initRectangle(10 , 20, 50, 50)
 	
     return pause

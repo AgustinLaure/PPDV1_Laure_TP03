@@ -1,6 +1,7 @@
 local Form = require("src/Math/form")
 local const = require ("src/Config/const")
 local Vector = require ("src/Math/vector")
+local colls = require ("src/Game/collisions")
 
 local Settings = {}
 
@@ -12,6 +13,11 @@ function Settings.init()
 	settings.volume.isBeingGrabbed = false
 	settings.volume.grabOffset = Vector.initVector2(0,0)
 	settings.volume.value = 100
+	settings.resWidth = const.gameResWidth
+	settings.resHeight = const.gameResHeight
+	settings.resIncrease = Form.initRectangle(const.gameResWidth/5*2 + 30, const.gameResHeight/2,20,20)
+	settings.resDecrease = Form.initRectangle(const.gameResWidth/5*2 + 60, const.gameResHeight/2,20,20)
+	settings.resValue = 2
 	return pause
 end
 
@@ -29,10 +35,15 @@ function Settings.update()
 	end
 end
 function Settings.draw()
-    love.graphics.printf("settings", 50, const.gameResHeight - (const.gameResHeight/5) * 4, const.gameResWidth, "center")
-	love.graphics.printf(tostring(settings.volume.value), 10, const.gameHeight - (const.gameHeight/5) , const.gameResWidth, "center")
+    love.graphics.print("Settings", const.gameResWidth/2, const.gameResHeight - (const.gameResHeight/5) * 4)
+	love.graphics.print("Volume", const.gameResWidth/4, const.gameResHeight/2 )
+	love.graphics.print("Resolution", const.gameResWidth/4, const.gameResHeight/2 + 80)
+	love.graphics.print(tostring(settings.volume.value), const.gameResWidth/5*4, const.gameResHeight/2)
+	love.graphics.print(tostring(settings.resWidth).. "X" .. tostring(settings.resHeight), const.gameResWidth/5*2, const.gameResHeight/2+ 80)
     Form.draw(settings.back)
 	Form.draw(settings.volume)
+	Form.draw(settings.resIncrease)
+	Form.draw(settings.resDecrease)
 end
 
 function Settings.mousepressed(player, x, y, button)
