@@ -72,15 +72,26 @@ Figure.sprites = sprites
 function Figure.init(type)
     figureAux = {}
 
-    figureAux.form = Form.initRectangle(100, 10, Figure.sizeX, Figure.sizeY)
     figureAux.dir = Vector.initVector2(0,1)
 	figureAux.grabOffset = Vector.initVector2(0,0)
     figureAux.speed = initialSpeed
 	figureAux.accel = 3000
     figureAux.isBeingGrabbed = false
-	figureAux.isFalling = false;
+	figureAux.isFalling = true;
     figureAux.isResting = false
     figureAux.type = type
+    figureAux.form= {}
+    figureFormPos = Vector.initVector2(0,0)
+
+    if figureAux.type == "THE WARRIOR" then
+        figureFormPos.x = 100
+        figureFormPos.y = 10
+    elseif figureAux.type == "THE MONARCH" or (figureAux.type == "THE BEGGAR") then
+        figureFormPos.x = 700
+        figureFormPos.y = 200
+    end
+
+    figureAux.form = Form.initRectangle(figureFormPos.x, figureFormPos.y, Figure.sizeX, Figure.sizeY)
     figureAux.sprite = Figure.sprites[figureAux.type].sprite
 
     return figureAux
