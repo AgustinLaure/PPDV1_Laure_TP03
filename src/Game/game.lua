@@ -188,4 +188,10 @@ function Game.keypressed(key)
 	end
 end
 
+function Game.wheelmoved(game, x, y)
+	if (not game.shelves.scroll.isBeingGrabbed and Collisions.pointOnRect(game.player.mouse, game.shelves.structureArea)) then
+		Shelves.scrollMouse(game.shelves.scroll, y)
+	end
+end
+
 return Game

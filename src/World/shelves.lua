@@ -211,4 +211,16 @@ function Shelves.updateVertScroll(scroll, player)
 	end
 end
 
+function Shelves.scrollMouse(scroll, y)
+		if scroll.currentPoint.form.pos.y >= scroll.upperPoint.form.pos.y and scroll.currentPoint.form.pos.y <= scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = scroll.currentPoint.form.pos.y - y * 3
+		end
+		if scroll.currentPoint.form.pos.y < scroll.upperPoint.form.pos.y then --fix position
+			scroll.currentPoint.form.pos.y = scroll.upperPoint.form.pos.y
+		end
+		if scroll.currentPoint.form.pos.y > scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = scroll.lowerPoint.form.pos.y
+		end
+end
+
 return Shelves
