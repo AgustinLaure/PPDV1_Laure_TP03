@@ -1,9 +1,11 @@
 local MergeMach = {}
 
-Form = require ("src/Math/form")
-Col = require ("src/Game/collisions")
-Vector = require ("src/Math/vector")
-Figure = require ("src/Figure/figure")
+local Form = require ("src/Math/form")
+local Col = require ("src/Game/collisions")
+local Vector = require ("src/Math/vector")
+local Figure = require ("src/Figure/figure")
+local Sprite = require ("src/Textures/sprites")
+local const = require ("src/Config/const")
 
 function MergeMach.init()
 
@@ -14,7 +16,10 @@ function MergeMach.init()
     auxMergeMach.resultHolder = MergeMach.initHolder(350, 300, 50, 30)
     auxMergeMach.hasJustCreatedFigure = false
     auxMergeMach.createdFigures = {}
-
+	auxMergeMach.silhouette = {}	
+	auxMergeMach.silhouette.sprite = ""
+    auxMergeMach.silhouette.form = Form.initRectangle(auxMergeMach.resultHolder.center.x - figureWidth / 2, auxMergeMach.resultHolder.center.y - figureHeight / 2, Figure.sizeX, Figure.sizeY)
+                                                      
     return auxMergeMach
 end
 
@@ -55,6 +60,9 @@ function MergeMach.draw(mergeMach)
     Form.draw(mergeMach.leftHolder.area) --Debugging
     Form.draw(mergeMach.rightHolder.area)
     Form.draw(mergeMach.resultHolder.area)
+	if (mergeMach.silhouette.sprite ~= "") then
+		Sprite.drawFigure(mergeMach.silhouette)
+	end
 end
 
 function MergeMach.initHolder(x, y , width, height)
@@ -98,6 +106,9 @@ function MergeMach.createFigure(figures, mergeMach, figureWidth, figureHeight)
     for i=1, #mergeMach.createdFigures do
         if mergeMach.createdFigures[i] == mergeResult then
             canCreateFigure = false
+			love.graphics.setColor(0,0,0,0.5)
+			mergeMach.silhouette.sprite = Figure.sprites[mergeResult].sprite
+			love.graphics.setColor(1, 1, 1)
         end
     end
     
