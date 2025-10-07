@@ -44,6 +44,11 @@ function MergeMach.update(mergeMach, figures)
             MergeMach.dropFigure(mergeMach.resultHolder, mergeMach.resultHolder.currentFigure)
         end
 
+        if not mergeMach.leftHolder.hasFigure or not mergeMach.rightHolder.hasFigure then
+            
+            mergeMach.silhouette.sprite = ""
+        end
+
         if mergeMach.leftHolder.hasFigure and mergeMach.rightHolder.hasFigure and not mergeMach.resultHolder.hasFigure and not mergeMach.hasJustCreatedFigure then
 
             MergeMach.createFigure(figures, mergeMach, Figure.sizeX, Figure.sizeY)
