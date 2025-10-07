@@ -187,4 +187,10 @@ function Game.keypressed(key)
 	end
 end
 
+function Game.wheelmoved(game, x, y)
+	if (not game.shelves.scroll.isBeingGrabbed) then
+	Shelves.scrollGoDown(game.shelves.scroll, y)
+	end
+end
+
 return Game

@@ -24,3 +24,7 @@ end
 function love.mousereleased( x, y, button)
 	Game.mousereleased(game, x, y, button)
 end
+
+function love.wheelmoved(x, y)
+	Game.wheelmoved(game, x, y)
+end
