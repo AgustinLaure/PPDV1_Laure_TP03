@@ -59,6 +59,7 @@ end
 function Game.draw(game)
 	if game.gameState == "Menu" then
 		Menu.draw(game.menu)
+		love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
 	elseif game.gameState == "Playing" then
     love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
     love.graphics.setColor(1, 1, 1)
