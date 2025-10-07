@@ -64,6 +64,9 @@ function Shelves.initArea(shelfFloorX, shelfFloorY, shelfFloorWidth, whichArea, 
 
 	auxArea.form = Form.initRectangle(shelfFloorX + (shelfFloorWidth/4) * whichArea - shelvesConst.figureWidth/2,shelfFloorY - shelvesConst.figureHeight, shelvesConst.figureWidth, shelvesConst.figureHeight)
 	auxArea.supposedFigure = Figure.getTypeFromIndex(whichArea+(whichShelf-1)*3)
+	auxArea.silhouette = {}
+	auxArea.silhouette.sprite = Figure.sprites[auxArea.supposedFigure].sprite
+	auxArea.silhouette.form = Form.initRectangle(shelfFloorX + (shelfFloorWidth/4) * whichArea - shelvesConst.figureWidth/2,shelfFloorY - shelvesConst.figureHeight, shelvesConst.figureWidth, shelvesConst.figureHeight)
 	auxArea.currentFigure = {}
 	auxArea.hasFigure = false
 
@@ -78,11 +81,23 @@ function Shelves.update(shelves, figures, player)
 end
 
 function Shelves.draw(shelves)
+	print(love.graphics.getColor())
+	print("defaultcolor")
+	love.graphics.setColor(0,0,0,1)
+	love.graphics.reset()
+	print(love.graphics.getColor())
+	print("newColor")
+
 	for i=1, shelves.amount do
 		Sprite.drawShelf(shelves.allShelves[i].floor)
 		for j = 1,shelvesConst.maxFigureAreasPerFloor do
+			love.graphics.setColor(0,0,0,0.5)
 			
-			--Form.draw(shelves.allShelves[i].figureAreas[j].form)
+			Sprite.drawFigure(shelves.allShelves[i].figureAreas[j].silhouette)
+
+			love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
+    love.graphics.setColor(1, 1, 1)
+			
 		end
 	end
 
@@ -131,7 +146,8 @@ function Shelves.moveShelves(shelves)
 		shelves.allShelves[i].floor.pos.y =shelves.shelvesCopy.allShelves[i].floor.pos.y- mover
 
 		for j=1, shelvesConst.maxFigureAreasPerFloor do
-			shelves.allShelves[i].figureAreas[j].form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].form.pos.y-mover
+			shelves.allShelves[i].figureAreas[j].silhouette.form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].silhouette.form.pos.y - mover
+
 			if shelves.allShelves[i].figureAreas[j].hasFigure then
 				print(shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y)
 				shelves.allShelves[i].figureAreas[j].currentFigure.form.pos.y = shelves.shelvesCopy.allShelves[i].figureAreas[j].form.pos.y - mover
@@ -193,6 +209,18 @@ function Shelves.updateVertScroll(scroll, player)
 			scroll.currentPoint.form.pos.y = scroll.lowerPoint.form.pos.y
 		end
 	end
+end
+
+function Shelves.scrollMouse(scroll, y)
+		if scroll.currentPoint.form.pos.y >= scroll.upperPoint.form.pos.y and scroll.currentPoint.form.pos.y <= scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = scroll.currentPoint.form.pos.y - y * 3
+		end
+		if scroll.currentPoint.form.pos.y < scroll.upperPoint.form.pos.y then --fix position
+			scroll.currentPoint.form.pos.y = scroll.upperPoint.form.pos.y
+		end
+		if scroll.currentPoint.form.pos.y > scroll.lowerPoint.form.pos.y then
+			scroll.currentPoint.form.pos.y = scroll.lowerPoint.form.pos.y
+		end
 end
 
 return Shelves

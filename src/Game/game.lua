@@ -84,7 +84,7 @@ function Game.draw(game)
 	Form.draw(pause.pauseButton)
 
 	for i=1, #game.figures do
-		Figure.draw(game.figures[i])
+		Figure.draw(game.figures[i], game.player)
 	end
 	elseif game.gameState == "Pause" then
 	Pause.draw(game.pauseScreen)
@@ -250,6 +250,12 @@ function Game.keypressed(key)
 	elseif game.gameState == "Credits" then
 	game.gameState = "Menu"
 	end
+	end
+end
+
+function Game.wheelmoved(game, x, y)
+	if (not game.shelves.scroll.isBeingGrabbed and Collisions.pointOnRect(game.player.mouse, game.shelves.structureArea)) then
+		Shelves.scrollMouse(game.shelves.scroll, y)
 	end
 end
 
