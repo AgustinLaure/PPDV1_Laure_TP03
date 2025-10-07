@@ -18,7 +18,7 @@ function MergeMach.init()
     auxMergeMach.createdFigures = {}
 	auxMergeMach.silhouette = {}	
 	auxMergeMach.silhouette.sprite = ""
-    auxMergeMach.silhouette.form = Form.initRectangle(auxMergeMach.resultHolder.center.x - figureWidth / 2, auxMergeMach.resultHolder.center.y - figureHeight / 2, Figure.sizeX, Figure.sizeY)
+    auxMergeMach.silhouette.form = Form.initRectangle(auxMergeMach.resultHolder.center.x - Figure.sizeX / 2, auxMergeMach.resultHolder.center.y - Figure.sizeY / 2, Figure.sizeX, Figure.sizeY)
                                                       
     return auxMergeMach
 end
@@ -61,7 +61,9 @@ function MergeMach.draw(mergeMach)
     Form.draw(mergeMach.rightHolder.area)
     Form.draw(mergeMach.resultHolder.area)
 	if (mergeMach.silhouette.sprite ~= "") then
+		love.graphics.setColor(0,0,0,0.5)
 		Sprite.drawFigure(mergeMach.silhouette)
+		love.graphics.setColor(1, 1, 1)
 	end
 end
 
@@ -103,12 +105,11 @@ function MergeMach.createFigure(figures, mergeMach, figureWidth, figureHeight)
 
     canCreateFigure = true
     canCreateFigure = mergeResult ~= "NONE"
+	auxMergeMach.silhouette.sprite = ""
     for i=1, #mergeMach.createdFigures do
         if mergeMach.createdFigures[i] == mergeResult then
             canCreateFigure = false
-			love.graphics.setColor(0,0,0,0.5)
 			mergeMach.silhouette.sprite = Figure.sprites[mergeResult].sprite
-			love.graphics.setColor(1, 1, 1)
         end
     end
     
