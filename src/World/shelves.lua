@@ -100,10 +100,10 @@ function Shelves.draw(shelves)
 		end
 	end
 
-	love.graphics.setColor(shelves.scroll.buttonColor.r, shelves.scroll.buttonColor.g, shelves.scroll.buttonColor.b, shelves.scroll.buttonColor.a)
-	Form.drawCircle(shelves.scroll.currentPoint.form)
 	love.graphics.setColor(shelves.scroll.lineColor.r,shelves.scroll.lineColor.g,shelves.scroll.lineColor.b,shelves.scroll.lineColor.a)
 	love.graphics.line(gs.toResX(shelvesConst.scrollUpperPointX), gs.toResY(shelvesConst.scrollUpperPointY), gs.toResX(shelvesConst.scrollLowerPointX), gs.toResY(shelvesConst.scrollLowerPointY))
+	love.graphics.setColor(shelves.scroll.buttonColor.r, shelves.scroll.buttonColor.g, shelves.scroll.buttonColor.b, shelves.scroll.buttonColor.a)
+	Form.drawCircle(shelves.scroll.currentPoint.form)
 
 	Sprite.setPlayingBaseColor()
 end
@@ -185,8 +185,8 @@ function Shelves.initVertScroll()
 	auxVertScroll.currentPoint.form = Form.initCircle(auxVertScroll.upperPoint.form.pos.x, auxVertScroll.upperPoint.form.pos.y, shelvesConst.scrollCurrentRadius)
 	auxVertScroll.value = 0
 	auxVertScroll.isBeingGrabbed = false
-	auxVertScroll.lineColor = {r= 0, g = 0, b = 0, a =1}
-	auxVertScroll.buttonColor = {r = 0, g=0, b=0, a = 1}
+	auxVertScroll.lineColor = {r= 0.7, g = 0.31, b = 0.22, a =1}
+	auxVertScroll.buttonColor = {r = 0.45, g=0.45, b=0.45, a = 1}
 
 	return auxVertScroll
 end
