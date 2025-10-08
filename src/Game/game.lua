@@ -3,6 +3,7 @@ local Form = require ("src/Math/form")
 local Vector = require ("src/Math/vector")
 local gs = require ("src/Math/gamespace")
 local const = require ("src/Config/const")
+local Sprite = require ("src/Textures/sprites")
 
 local Collisions = require ("src/Game/collisions")
 
@@ -70,6 +71,8 @@ function Game.draw(game)
 	elseif game.gameState == "Playing" then
     love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
     love.graphics.setColor(1, 1, 1)
+	Sprite.drawBG()
+	
 	if game.player.isGrabbing then
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
 	end
@@ -83,7 +86,6 @@ function Game.draw(game)
 	love.graphics.print("figure res: x: " .. gs.toResX(game.figure.form.pos.x), 0, 60)	
 	love.graphics.print("y: " .. gs.toResY(game.figure.form.pos.y), 200, 60)
 	]]
-	
 	MergeMach.draw(game.mergeMach)
 	Shelves.draw(game.shelves)
 	World.draw(game.world)

@@ -8,6 +8,7 @@ local shelfSpriteWidth = 1400
 local shelfSpriteHeight = 80
 
 local shelfSprite = love.graphics.newImage("resources/sprites/bg/shelf.png")
+local bgSprite = love.graphics.newImage("resources/sprites/bg/background.png")
 
 
 local Sprite = {}
@@ -22,6 +23,10 @@ end
 
 function Sprite.drawShelf(shelfFloor)
     love.graphics.draw(shelfSprite, gs.toResX(shelfFloor.pos.x), gs.toResY(shelfFloor.pos.y),math.rad(0), gs.toResX(shelfFloor.width) / shelfSpriteWidth, gs.toResY(shelfFloor.height) / shelfSpriteHeight) --Sprite, x, y, rotation, scaleX, scaleY, width, height
+end
+
+function Sprite.drawBG()
+    love.graphics.draw(bgSprite, 0, 0, math.rad(0), const.gameResWidth / 1920, const.gameResHeight / 1080) --Sprite, x, y, rotation, scaleX, scaleY, width, height
 end
 
 function Sprite.setPlayingBaseColor()
