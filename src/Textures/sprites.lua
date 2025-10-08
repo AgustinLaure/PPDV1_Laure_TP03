@@ -24,4 +24,9 @@ function Sprite.drawShelf(shelfFloor)
     love.graphics.draw(shelfSprite, gs.toResX(shelfFloor.pos.x), gs.toResY(shelfFloor.pos.y),math.rad(0), gs.toResX(shelfFloor.width) / shelfSpriteWidth, gs.toResY(shelfFloor.height) / shelfSpriteHeight) --Sprite, x, y, rotation, scaleX, scaleY, width, height
 end
 
+function Sprite.setPlayingBaseColor()
+	love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
+   	love.graphics.setColor(1, 1, 1)
+end
+
 return Sprite

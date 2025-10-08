@@ -95,9 +95,7 @@ function Shelves.draw(shelves)
 			
 			Sprite.drawFigure(shelves.allShelves[i].figureAreas[j].silhouette)
 
-			love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
-    love.graphics.setColor(1, 1, 1)
-			
+			Sprite.setPlayingBaseColor()
 		end
 	end
 

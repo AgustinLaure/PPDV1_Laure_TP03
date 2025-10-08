@@ -11,4 +11,5 @@ Constants.floorHeight = 110
 
 Constants.gameResWidth = 1280 
 Constants.gameResHeight = 720
+
 return Constants
