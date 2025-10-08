@@ -2,11 +2,6 @@ local Game = require ("src/Game/game")
 
 local game = {}
 
-function love.conf(t)
-	t.title = "StoryMerger"
-	t.console = false
-end
-
 function love.load()
 	game = Game.init()
 end
