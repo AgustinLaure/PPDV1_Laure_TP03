@@ -37,6 +37,9 @@ function Game.init()
 	game.credits = Credits.init()
 	game.music = love.audio.newSource("resources/sounds/gameMusic.mp3", "static")
 	game.fellsound = love.audio.newSource("resources/sounds/blockFall.mp3", "static")
+
+	const.defaultFont = love.graphics.getFont()
+
 	return game
 end
 
@@ -257,6 +260,11 @@ function Game.wheelmoved(game, x, y)
 	if (not game.shelves.scroll.isBeingGrabbed and Collisions.pointOnRect(game.player.mouse, game.shelves.structureArea)) then
 		Shelves.scrollMouse(game.shelves.scroll, y)
 	end
+end
+
+function Game.setPlayingBaseColor()
+	love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
+   	love.graphics.setColor(1, 1, 1)
 end
 
 return Game
