@@ -11,11 +11,12 @@ function Menu.init()
 	--menu.settings = Form.initRectangle( const.gameResWidth * 0.25 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
 	menu.credits = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 80, const.gameResWidth / 3, 30)
     menu.quit = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 120, const.gameResWidth / 3, 30)
-    menu.center = -50
+    menu.font = love.graphics.setNewFont("resources/fonts/FredokaOne-Regular.ttf", 32)
 	return menu
 end
 
 function Menu.draw(menu)
+    love.graphics.setFont(menu.font)
     love.graphics.printf("THE STORY MERGER", 0, const.gameResHeight * 0.3, const.gameResWidth, "center")
     Form.draw(menu.play)
 	--Form.draw(menu.settings)
@@ -27,6 +28,7 @@ function Menu.draw(menu)
     love.graphics.print("Credits", menu.credits.pos.x + menu.credits.width/2, menu.credits.pos.y + menu.credits.height*3+5)
     love.graphics.print("Quit", menu.quit.pos.x + menu.quit.width/2, menu.quit.pos.y + menu.quit.height*3 + 20)
     love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setFont(const.defaultFont)
 end
 
 return Menu

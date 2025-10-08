@@ -38,7 +38,11 @@ function Game.init()
 	game.credits = Credits.init()
 	game.music = love.audio.newSource("resources/sounds/gameMusic.mp3", "static")
 	game.fellsound = love.audio.newSource("resources/sounds/blockFall.mp3", "static")
+	game.font = love.graphics.newFont("resources/fonts/FredokaOne-Regular.ttf",32)
 
+	love.graphics.setFont(game.font)
+	
+	--love.graphics.setFont("resources/fonts/FredokaOne-Regular.ttf")
 	const.defaultFont = love.graphics.getFont()
 
 	return game
