@@ -8,10 +8,14 @@ local Sprite = require ("src/Textures/sprites")
 local const = require ("src/Config/const")
 
 local holderWidth = 100
-local holderHeight = 20
+local holderHeight = 15
 
-local resultWidth = 80
+local resultWidth = 90
 local resultHeight = 40
+
+local mergerLeftSprite = love.graphics.newImage("resources/sprites/bg/mergerleft.png")
+local mergerRightSprite = love.graphics.newImage("resources/sprites/bg/mergerright.png")
+local mergerMiddleSprite = love.graphics.newImage("resources/sprites/bg/mergemiddle.png")
 
 function MergeMach.init()
 
@@ -68,9 +72,9 @@ function MergeMach.update(mergeMach, figures)
 end
 
 function MergeMach.draw(mergeMach) 
-    Form.draw(mergeMach.leftHolder.area) --Debugging
-    Form.draw(mergeMach.rightHolder.area)
-    Form.draw(mergeMach.resultHolder.area)
+    Sprite.draw(mergerLeftSprite, mergeMach.leftHolder.area, 120, 17) --Debugging
+    Sprite.draw(mergerRightSprite, mergeMach.rightHolder.area, 120, 17) --Debugging
+    Sprite.draw(mergerMiddleSprite, mergeMach.resultHolder.area, 108, 48) --Debugging
 	if (mergeMach.silhouette.sprite ~= "") then
 		love.graphics.setColor(0,0,0,0.5)
 		Sprite.drawFigure(mergeMach.silhouette)

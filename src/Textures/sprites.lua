@@ -12,6 +12,10 @@ local shelfSprite = love.graphics.newImage("resources/sprites/bg/shelf.png")
 
 local Sprite = {}
 
+function Sprite.draw(sprite, form, spriteWidth, spriteHeight)
+    love.graphics.draw(sprite, gs.toResX(form.pos.x), gs.toResY(form.pos.y),math.rad(0), gs.toResX(form.width) / spriteWidth, gs.toResY(form.height) / spriteHeight) --Sprite, x, y, rotation, scaleX, scaleY, width, height
+end
+
 function Sprite.drawFigure(figure)
     love.graphics.draw(figure.sprite, gs.toResX(figure.form.pos.x), gs.toResY(figure.form.pos.y),math.rad(0), gs.toResX(const.figSizeX) / figSpriteWidth, gs.toResY(const.figSizeY) / figSpriteHeight) --Sprite, x, y, rotation, scaleX, scaleY, width, height
 end

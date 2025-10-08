@@ -1,7 +1,10 @@
 local Form = require("src/Math/form")
 local const = require ("src/Config/const")
+local Sprite = require ("src/Textures/sprites")
 
 local World = {}
+
+local floorSprite = love.graphics.newImage("resources/sprites/bg/table.png")
 
 function World.init()
 
@@ -13,7 +16,7 @@ function World.init()
 end
 
 function World.draw(world)
-    Form.draw(world.floor)
+    Sprite.draw(floorSprite, world.floor, 2760, 440)
 	Form.draw(world.leftWall)
 	Form.draw(world.rightWall)
 end
