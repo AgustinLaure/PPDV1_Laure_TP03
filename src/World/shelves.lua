@@ -4,6 +4,7 @@ local Figure = require("src/Figure/figure")
 local Collisions = require("src/Game/collisions")
 local Vector = require("src/Math/vector")
 local Sprite = require ("src/Textures/sprites")
+local gs = require("src/Math/gamespace")
 
 local Shelves = {}
 
@@ -20,11 +21,11 @@ local shelvesConst =
 	
 	maxFigureAreasPerFloor = 3,
 
-	scrollUpperPointX = 1055,
+	scrollUpperPointX = 1058,
 	scrollUpperPointY = 100,
 	scrollUpperRadius = 8,
 
-	scrollLowerPointX = 1055,
+	scrollLowerPointX = 1058,
 	scrollLowerPointY = 500,
 	scrollLowerRadius = 8,
 
@@ -99,7 +100,12 @@ function Shelves.draw(shelves)
 		end
 	end
 
+	love.graphics.setColor(shelves.scroll.buttonColor.r, shelves.scroll.buttonColor.g, shelves.scroll.buttonColor.b, shelves.scroll.buttonColor.a)
 	Form.drawCircle(shelves.scroll.currentPoint.form)
+	love.graphics.setColor(shelves.scroll.lineColor.r,shelves.scroll.lineColor.g,shelves.scroll.lineColor.b,shelves.scroll.lineColor.a)
+	love.graphics.line(gs.toResX(shelvesConst.scrollUpperPointX), gs.toResY(shelvesConst.scrollUpperPointY), gs.toResX(shelvesConst.scrollLowerPointX), gs.toResY(shelvesConst.scrollLowerPointY))
+
+	Sprite.setPlayingBaseColor()
 end
 
 function Shelves.receiveFigure(shelves, figures, player)
@@ -179,6 +185,8 @@ function Shelves.initVertScroll()
 	auxVertScroll.currentPoint.form = Form.initCircle(auxVertScroll.upperPoint.form.pos.x, auxVertScroll.upperPoint.form.pos.y, shelvesConst.scrollCurrentRadius)
 	auxVertScroll.value = 0
 	auxVertScroll.isBeingGrabbed = false
+	auxVertScroll.lineColor = {r= 0, g = 0, b = 0, a =1}
+	auxVertScroll.buttonColor = {r = 0, g=0, b=0, a = 1}
 
 	return auxVertScroll
 end
