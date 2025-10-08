@@ -7,18 +7,24 @@ local Figure = require ("src/Figure/figure")
 local Sprite = require ("src/Textures/sprites")
 local const = require ("src/Config/const")
 
+local holderWidth = 100
+local holderHeight = 20
+
+local resultWidth = 80
+local resultHeight = 40
+
 function MergeMach.init()
 
     auxMergeMach = {}
 
-    auxMergeMach.leftHolder = MergeMach.initHolder(300, 400, 50, 30)
-    auxMergeMach.rightHolder = MergeMach.initHolder(400,400, 50, 30)
-    auxMergeMach.resultHolder = MergeMach.initHolder(350, 300, 50, 30)
+    auxMergeMach.leftHolder = MergeMach.initHolder(const.floorWidth / 2 - holderWidth * 1.5, const.gameHeight - const.floorHeight - holderHeight, holderWidth, holderHeight)
+    auxMergeMach.rightHolder = MergeMach.initHolder(const.floorWidth / 2 + holderWidth / 2, const.gameHeight - const.floorHeight - holderHeight, holderWidth, holderHeight)
+    auxMergeMach.resultHolder = MergeMach.initHolder(const.floorWidth / 2 - resultWidth / 2, const.gameHeight - const.floorHeight - resultHeight, resultWidth, resultHeight)
     auxMergeMach.hasJustCreatedFigure = false
     auxMergeMach.createdFigures = {}
 	auxMergeMach.silhouette = {}	
 	auxMergeMach.silhouette.sprite = ""
-    auxMergeMach.silhouette.form = Form.initRectangle(auxMergeMach.resultHolder.center.x - Figure.sizeX / 2, auxMergeMach.resultHolder.center.y - Figure.sizeY / 2, Figure.sizeX, Figure.sizeY)
+    auxMergeMach.silhouette.form = Form.initRectangle(auxMergeMach.resultHolder.center.x - Figure.sizeX / 2, auxMergeMach.resultHolder.center.y - Figure.sizeY - resultHeight, Figure.sizeX, Figure.sizeY)
                                                       
     return auxMergeMach
 end
@@ -85,14 +91,14 @@ end
 
 function MergeMach.receiveFigure(holder, figure)
 
-    figureCenter = Vector.initVector2(figure.form.pos.x + figure.form.width / 2, figure.form.pos.y + figure.form.height / 2)
+    figureCenter = Vector.initVector2(figure.form.pos.x + figure.form.width / 2, figure.form.pos.y + figure.form.height)
 
     if (Col.pointOnRect(figureCenter, holder.area) and figure.isFalling and not (holder.hasFigure)) then
         
         holder.currentFigure = figure
 
         figure.form.pos.x = holder.center.x-figure.form.width/2
-        figure.form.pos.y = holder.center.y-figure.form.height/2
+        figure.form.pos.y = holder.center.y - figure.form.height - holderHeight
         figure.isResting = true
         figure.isBeingGrabbed = false
 
@@ -123,7 +129,7 @@ function MergeMach.createFigure(figures, mergeMach, figureWidth, figureHeight)
 
     newFigure = Figure.init(mergeResult)
     newFigure.form.pos.x = mergeMach.resultHolder.center.x - figureWidth / 2
-    newFigure.form.pos.y = mergeMach.resultHolder.center.y - figureHeight / 2
+    newFigure.form.pos.y = mergeMach.resultHolder.center.y - figureHeight - resultHeight
     newFigure.sprite = Figure.sprites[mergeResult].sprite
     newFigure.type = mergeResult
     newFigure.isResting = true
