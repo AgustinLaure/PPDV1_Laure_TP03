@@ -23,7 +23,7 @@ function Credits.draw(pause)
 	love.graphics.setColor(0,0,0,0.75)
 	love.graphics.printf("Movious",-200-credits.center,const.gameResHeight+150 - (const.gameResHeight/5)*4, const.gameResWidth, "center")
 	love.graphics.printf("LordMungi",375-25-credits.center ,const.gameResHeight+100+200+100 - (const.gameResHeight/5)*4, const.gameResWidth, "left")
-	love.graphics.printf("Musico",-250-credits.center ,const.gameResHeight+100+200+100 - (const.gameResHeight/5)*4, const.gameResWidth, "right") -----------ACA GALLIII
+	love.graphics.printf("Soundimage - puzzle-music",-125-credits.center ,const.gameResHeight+100+200+100 - (const.gameResHeight/5)*4, const.gameResWidth, "right")
 	love.graphics.printf("LordMungi",50-credits.center,const.gameResHeight+150- (const.gameResHeight/5)*4, const.gameResWidth, "center")
 	love.graphics.printf("Agustin Laure",300-credits.center,const.gameResHeight+150- (const.gameResHeight/5)*4, const.gameResWidth, "center")
 	Sprite.setPlayingBaseColor()
