@@ -7,7 +7,7 @@ function Pause.init()
 
 	pause = {}
 	pause.resume = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2, const.gameResWidth / 3, 30)
-	pause.settings = Form.initRectangle( const.gameResWidth / 4 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
+	--pause.settings = Form.initRectangle( const.gameResWidth / 4 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
 	pause.quit = Form.initRectangle(const.gameResWidth / 4 , const.gameResHeight / 2 + 80, const.gameResWidth / 3, 30)
     pause.pauseButton = Form.initRectangle(10 , 20, 50, 50)
 	
@@ -17,11 +17,11 @@ end
 function Pause.draw(pause)
     love.graphics.printf("paused", 50, const.gameResHeight - (const.gameResHeight/4) * 3, const.gameResWidth, "center")
     Form.draw(pause.resume)
-	Form.draw(pause.settings)
+	--Form.draw(pause.settings)
 	Form.draw(pause.quit)
     love.graphics.setColor(1, 0, 0, 1)
     love.graphics.print("resume", pause.resume.pos.x*2, pause.resume.pos.y + 80)
-    love.graphics.print("settings", pause.settings.pos.x*2, pause.settings.pos.y + 80)
+    --love.graphics.print("settings", pause.settings.pos.x*2, pause.settings.pos.y + 80)
     love.graphics.print("quit", pause.quit.pos.x*2, pause.quit.pos.y + 80)
     love.graphics.setColor(1, 1, 1, 1)
 end
