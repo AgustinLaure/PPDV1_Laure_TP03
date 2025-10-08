@@ -14,7 +14,7 @@ local MergeMach = require ("src/MergeMachine/mergemachine")
 
 local Pause = require ("src/Screens/pause")
 local Menu = require ("src/Screens/menu")
-local Settings = require ("src/Screens/settings")
+--local Settings = require ("src/Screens/settings")
 local Credits = require ("src/Screens/credits")
 
 local Game = {}
@@ -33,7 +33,7 @@ function Game.init()
 	game.mergeMach = MergeMach.init()
 	game.pauseScreen = Pause.init()
 	game.menu = Menu.init()
-	game.settings = Settings.init()
+	--game.settings = Settings.init()
 	game.credits = Credits.init()
 	game.music = love.audio.newSource("resources/sounds/gameMusic.mp3", "static")
 	game.fellsound = love.audio.newSource("resources/sounds/blockFall.mp3", "static")
@@ -45,8 +45,8 @@ end
 
 function Game.update(game, dt)
 	Player.update(game.player)
-	game.fellsound:setVolume(settings.volume.value/100)
-	game.music:setVolume(settings.volume.value/100)
+	--game.fellsound:setVolume(settings.volume.value/100)
+	--game.music:setVolume(settings.volume.value/100)
 	game.music:play()
  	if game.gameState == "Playing" then
 	for i=1, #game.figures do
@@ -54,8 +54,8 @@ function Game.update(game, dt)
 	end
 	MergeMach.update(game.mergeMach, game.figures)
 	Shelves.update(game.shelves, game.figures, game.player)
-	elseif game.gameState == "Settings" then
-		Settings.update(game.settings)
+	--elseif game.gameState == "Settings" then
+	--	Settings.update(game.settings)
 	end
 end
 
@@ -93,8 +93,8 @@ function Game.draw(game)
 	Pause.draw(game.pauseScreen)
 	elseif game.gameState == "Credits" then
 	Credits.draw(game.credits)
-	elseif game.gameState == "Settings" then
-	Settings.draw(game.settings)
+	--elseif game.gameState == "Settings" then
+	--Settings.draw(game.settings)
 	if game.player.isGrabbing then
 		love.graphics.circle("fill", gs.toResX(game.player.mouse.x), gs.toResY(game.player.mouse.y), 10)
 	end
@@ -105,9 +105,9 @@ function Game.mousepressed(game, x, y, button)
 	if game.gameState == "Menu" then
 	if Collisions.pointOnRect(game.player.mouse, menu.play) then
 		game.gameState = "Playing"
-	elseif Collisions.pointOnRect(game.player.mouse, menu.settings) then
-		game.prevState = game.gameState
-		game.gameState = "Settings"
+	--elseif Collisions.pointOnRect(game.player.mouse, menu.settings) then
+	--	game.prevState = game.gameState
+	--	game.gameState = "Settings"
 	elseif Collisions.pointOnRect(game.player.mouse, menu.credits) then
 		game.gameState = "Credits"
 	elseif Collisions.pointOnRect(game.player.mouse, menu.quit) then
@@ -137,16 +137,17 @@ function Game.mousepressed(game, x, y, button)
 	elseif game.gameState == "Pause" then
 	if Collisions.pointOnRect(game.player.mouse, pause.resume) then
 		game.gameState = "Playing"
-	elseif Collisions.pointOnRect(game.player.mouse, pause.settings) then
-		game.prevState = game.gameState
-		game.gameState = "Settings"
+	--elseif Collisions.pointOnRect(game.player.mouse, pause.settings) then
+	--	game.prevState = game.gameState
+	--	game.gameState = "Settings"
 	elseif Collisions.pointOnRect(game.player.mouse, pause.quit) then
 		game.gameState = "Menu"
 	end
-	elseif game.gameState == "Settings" then
-	if Collisions.pointOnRect(game.player.mouse, settings.back) then
-		game.gameState = game.prevState
-	end
+	--elseif game.gameState == "Settings" then
+	--if Collisions.pointOnRect(game.player.mouse, settings.back) then
+	--	game.gameState = game.prevState
+	--end
+	--[[
 	if Collisions.pointOnRect(game.player.mouse, settings.volume) then
 		
 		settings.volume.grabOffset.x = game.player.mouse.x - settings.volume.pos.x
@@ -220,7 +221,8 @@ function Game.mousepressed(game, x, y, button)
 		love.window.setMode(settings.resWidth,settings.resHeight)
 	end
 	Settings.mousepressed(game.player, x, y, button)
-	elseif game.gameState == "Credits" then
+	--]]
+elseif game.gameState == "Credits" then
 	if Collisions.pointOnRect(game.player.mouse, credits.back) then
 		game.gameState = "Menu"
 	end
@@ -229,7 +231,7 @@ end
 
 function Game.mousereleased(game, x, y, button)
 	Player.mousereleased(game.player, x, y, button)
-	Settings.mousereleased(game.player, x, y, button)
+	--Settings.mousereleased(game.player, x, y, button)
 
 	for i=1, #game.figures do
 		if (game.figures[i].isBeingGrabbed) then
@@ -237,7 +239,7 @@ function Game.mousereleased(game, x, y, button)
 		end
 	end
 
-	settings.volume.isBeingGrabbed = false
+	--settings.volume.isBeingGrabbed = false
 
 	game.player.isGrabbing = false;	
 end
@@ -248,8 +250,8 @@ function Game.keypressed(key)
 	game.gameState = "Pause"
 	elseif game.gameState == "Pause" then
 	game.gameState = "Playing"
-	elseif game.gameState == "Settings" then
-	game.gameState = game.prevState
+	--elseif game.gameState == "Settings" then
+	--game.gameState = game.prevState
 	elseif game.gameState == "Credits" then
 	game.gameState = "Menu"
 	end
@@ -260,11 +262,6 @@ function Game.wheelmoved(game, x, y)
 	if (not game.shelves.scroll.isBeingGrabbed and Collisions.pointOnRect(game.player.mouse, game.shelves.structureArea)) then
 		Shelves.scrollMouse(game.shelves.scroll, y)
 	end
-end
-
-function Game.setPlayingBaseColor()
-	love.graphics.setBackgroundColor(213 / 255, 193 / 255, 161 / 255)
-   	love.graphics.setColor(1, 1, 1)
 end
 
 return Game

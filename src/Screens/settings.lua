@@ -21,7 +21,7 @@ function Settings.init()
 	return pause
 end
 
-function Settings.update()
+--function Settings.update()
 	if settings.volume.isBeingGrabbed then
     	if game.player.mouse.x - settings.volume.grabOffset.x < const.gameWidth/2 then
         settings.volume.pos.x = const.gameWidth/2
