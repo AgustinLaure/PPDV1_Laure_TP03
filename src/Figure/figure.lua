@@ -46,25 +46,25 @@ local sprites =
     ["THE MARTIAL ARTIST"] = {sprite =love.graphics.newImage("resources/sprites/figures/martial-artist.png")},
     ["THE SCAMMER"] = {sprite =love.graphics.newImage("resources/sprites/figures/scammer.png")},
     ["THE WIZARD"] = {sprite =love.graphics.newImage("resources/sprites/figures/wizard.png")},
-    ["SCIENTIST"] = {sprite =love.graphics.newImage("resources/sprites/figures/scientist.png")},
-    ["VILLAIN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ASTROLOGER"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["SHINOBI"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["SUPERHERO"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["MONK"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ENGINEER"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ASTRONAUT"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["BATMAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["IRONMAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ROBOT"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["BOUNTY_HUNTER"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["THOR"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ROBOCOP"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["RAIDEN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["DARTH_VADER"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["ALIEN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["SUPERMAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
-    ["GOKU"] = {sprite =love.graphics.newImage("resources/sprites/figures/warrior.png")},
+    ["THE SCIENTIST"] = {sprite =love.graphics.newImage("resources/sprites/figures/scientist.png")},
+    ["THE VILLAIN"] = {sprite =love.graphics.newImage("resources/sprites/figures/villain.png")},
+    ["THE ASTROLOGER"] = {sprite =love.graphics.newImage("resources/sprites/figures/astrologer.png")},
+    ["THE SHINOBI"] = {sprite =love.graphics.newImage("resources/sprites/figures/shinobi.png")},
+    ["THE SUPERHERO"] = {sprite =love.graphics.newImage("resources/sprites/figures/superhero.png")},
+    ["THE MONK"] = {sprite =love.graphics.newImage("resources/sprites/figures/monk.png")},
+    ["THE ENGINEER"] = {sprite =love.graphics.newImage("resources/sprites/figures/engineer.png")},
+    ["THE ASTRONAUT"] = {sprite =love.graphics.newImage("resources/sprites/figures/astronaut.png")},
+    ["THE VIGILANTE"] = {sprite =love.graphics.newImage("resources/sprites/figures/vigilante.png")},
+    ["THE PHILANTROPIST"] = {sprite =love.graphics.newImage("resources/sprites/figures/philantropist.png")},
+    ["THE ROBOT"] = {sprite =love.graphics.newImage("resources/sprites/figures/robot.png")},
+    ["THE BOUNTY HUNTER"] = {sprite =love.graphics.newImage("resources/sprites/figures/bounty-hunter.png")},
+    ["THE DEMIGOD"] = {sprite =love.graphics.newImage("resources/sprites/figures/demigod.png")},
+    ["THE SENTINEL"] = {sprite =love.graphics.newImage("resources/sprites/figures/sentinel.png")},
+    ["THE CYBORG"] = {sprite =love.graphics.newImage("resources/sprites/figures/cyborg.png")},
+    ["THE EMPEROR"] = {sprite =love.graphics.newImage("resources/sprites/figures/emperor.png")},
+    ["THE ALIEN"] = {sprite =love.graphics.newImage("resources/sprites/figures/alien.png")},
+    ["THE STEEL MAN"] = {sprite =love.graphics.newImage("resources/sprites/figures/steel-man.png")},
+    ["THE LEGEND"] = {sprite =love.graphics.newImage("resources/sprites/figures/legend.png")},
 }
 
 Figure.sprites = sprites
@@ -191,25 +191,25 @@ function Figure.getTypeFromIndex(ind)
         [30] = "THE MARTIAL ARTIST",
         [31] = "THE SCAMMER",
         [32] = "THE WIZARD",
-        [33] = "SCIENTIST",
-        [34] = "VILLAIN",
-        [35] = "ASTROLOGER",
-        [36] = "SHINOBI",
-        [37] = "SUPERHERO",
-        [38] = "MONK",
-        [39] = "ENGINEER",
-        [40] = "ASTRONAUT",
-        [41] = "BATMAN",
-        [42] = "IRONMAN",
-        [43] = "ROBOT",
-        [44] = "BOUNTY_HUNTER",
-        [45] = "THOR",
-        [46] = "ROBOCOP",
-        [47] = "RAIDEN",
-        [48] = "DARTH_VADER",
-        [49] = "ALIEN",
-        [50] = "SUPERMAN",
-        [51] = "GOKU",
+        [33] = "THE SCIENTIST",
+        [34] = "THE VILLAIN",
+        [35] = "THE ASTROLOGER",
+        [36] = "THE SHINOBI",
+        [37] = "THE SUPERHERO",
+        [38] = "THE MONK",
+        [39] = "THE ENGINEER",
+        [40] = "THE ASTRONAUT",
+        [41] = "THE VIGILANTE",
+        [42] = "THE PHILANTROPIST",
+        [43] = "THE ROBOT",
+        [44] = "THE BOUNTY HUNTER",
+        [45] = "THE DEMIGOD",
+        [46] = "THE SENTINEL",
+        [47] = "THE CYBORG",
+        [48] = "THE EMPEROR",
+        [49] = "THE ALIEN",
+        [50] = "THE STEEL MAN",
+        [51] = "THE LEGEND",
     }
 
     return typeFromIndex[ind]
@@ -250,25 +250,25 @@ function Figure.getIndexFromType(type, maxTypes)
         ["THE MARTIAL ARTIST"] = 30,
         ["THE SCAMMER"] = 31,
         ["THE WIZARD"] = 32,
-        ["SCIENTIST"] = 33,
-        ["VILLAIN"] = 34,
-        ["ASTROLOGER"] = 35,
-        ["SHINOBI"] = 36,
-        ["SUPERHERO"] = 37,
-        ["MONK"] = 38,
-        ["ENGINEER"] = 39,
-        ["ASTRONAUT"] = 40,
-        ["BATMAN"] = 41,
-        ["IRONMAN"] = 42,
-        ["ROBOT"] = 43,
-        ["BOUNTY_HUNTER"] = 44,
-        ["THOR"] = 45,
-        ["ROBOCOP"] = 46,
-        ["RAIDEN"] = 47,
-        ["DARTH_VADER"] = 48,
-        ["ALIEN"] = 49,
-        ["SUPERMAN"] = 50,
-        ["GOKU"] = 51,
+        ["THE SCIENTIST"] = 33,
+        ["THE VILLAIN"] = 34,
+        ["THE ASTROLOGER"] = 35,
+        ["THE SHINOBI"] = 36,
+        ["THE SUPERHERO"] = 37,
+        ["THE MONK"] = 38,
+        ["THE ENGINEER"] = 39,
+        ["THE ASTRONAUT"] = 40,
+        ["THE VIGILANTE"] = 41,
+        ["THE PHILANTROPIST"] = 42,
+        ["THE ROBOT"] = 43,
+        ["THE BOUNTY HUNTER"] = 44,
+        ["THE DEMIGOD"] = 45,
+        ["THE SENTINEL"] = 46,
+        ["THE CYBORG"] = 47,
+        ["THE EMPEROR"] = 48,
+        ["THE ALIEN"] = 49,
+        ["THE STEEL MAN"] = 50,
+        ["THE LEGEND"] = 51,
     }
 
     return indexFromType[type]
@@ -311,25 +311,25 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         ["THE COWBOY"] = false,
         ["THE SCAMMER"] = false,
         ["THE WIZARD"] = false,
-        ["SCIENTIST"] = false,
-        ["VILLAIN"] = false,
-        ["ASTROLOGER"] = false,
-        ["SHINOBI"] = false,
-        ["SUPERHERO"] = false,
-        ["MONK"] = false,
-        ["ENGINEER"] = false,
-        ["ASTRONAUT"] = false,
-        ["BATMAN"] = false,
-        ["IRONMAN"] = false,
-        ["ROBOT"] = false,
-        ["BOUNTY_HUNTER"] = false,
-        ["THOR"] = false,
-        ["ROBOCOP"] = false,
-        ["RAIDEN"] = false,
-        ["DARTH_VADER"] = false,
-        ["ALIEN"] = false,
-        ["SUPERMAN"] = false,
-        ["GOKU"] = false,
+        ["THE SCIENTIST"] = false,
+        ["THE VILLAIN"] = false,
+        ["THE ASTROLOGER"] = false,
+        ["THE SHINOBI"] = false,
+        ["THE SUPERHERO"] = false,
+        ["THE MONK"] = false,
+        ["THE ENGINEER"] = false,
+        ["THE ASTRONAUT"] = false,
+        ["THE VIGILANTE"] = false,
+        ["THE PHILANTROPIST"] = false,
+        ["THE ROBOT"] = false,
+        ["THE BOUNTY HUNTER"] = false,
+        ["THE DEMIGOD"] = false,
+        ["THE SENTINEL"] = false,
+        ["THE CYBORG"] = false,
+        ["THE EMPEROR"] = false,
+        ["THE ALIEN"] = false,
+        ["THE STEEL MAN"] = false,
+        ["THE LEGEND"] = false,
 
     }
     possFigures[figure1Type] = true
@@ -375,8 +375,8 @@ function Figure.getMergeResult(figure1Type, figure2Type)
             resultType = "THE ASSASSIN"
         elseif (possFigures["THE EMPLOYEE"]) then
             resultType = "THE POLICEMAN"
-        elseif (possFigures["SCIENTIST"]) then
-            resultType = "ENGINEER"
+        elseif (possFigures["THE SCIENTIST"]) then
+            resultType = "THE ENGINEER"
         elseif (possFigures["THE STUDENT"]) then
             resultType = "THE MARTIAL ARTIST"
         elseif (possFigures["THE THIEF"]) then
@@ -419,7 +419,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         if (possFigures["THE NINJA"]) then
             resultType = "THE SAMURAI"
         elseif (possFigures["THE WIZARD"]) then
-            resultType = "SUPERHERO"
+            resultType = "THE SUPERHERO"
         elseif (possFigures["THE MONARCH"]) then
             resultType = "THE GENERAL"
         end
@@ -445,8 +445,8 @@ function Figure.getMergeResult(figure1Type, figure2Type)
 
     if(possFigures["THE VIKING"]) then
         
-        if (possFigures["SUPERHERO"]) then
-            resultType = "THOR"
+        if (possFigures["THE SUPERHERO"]) then
+            resultType = "THE DEMIGOD"
         elseif (possFigures["THE GENERAL"]) then
             resultType = "THE CAPTAIN"
         end
@@ -469,8 +469,8 @@ function Figure.getMergeResult(figure1Type, figure2Type)
             resultType = "THE DICTATOR"
         elseif (possFigures["THE VIKING"]) then
             resultType = "THE CAPTAIN"
-        elseif (possFigures["SCIENTIST"]) then
-            resultType = "ENGINEER"
+        elseif (possFigures["THE SCIENTIST"]) then
+            resultType = "THE ENGINEER"
         end
     end
 
@@ -478,24 +478,24 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         
         if (possFigures["THE MONARCH"]) then
             resultType = "THE CEO"
-        elseif (possFigures["SUPERHERO"]) then
-            resultType = "BATMAN"
+        elseif (possFigures["THE SUPERHERO"]) then
+            resultType = "THE VIGILANTE"
         end
     end
 
     if(possFigures["THE DICTATOR"]) then
         
-        if (possFigures["ASTRONAUT"]) then
-            resultType = "DARTH_VADER"
+        if (possFigures["THE ASTRONAUT"]) then
+            resultType = "THE EMPEROR"
         end
     end
 
     if(possFigures["THE NINJA"]) then
         
         if (possFigures["THE WIZARD"]) then
-            resultType = "SHINOBI"
-        elseif (possFigures["ROBOT"]) then
-            resultType = "RAIDEN"
+            resultType = "THE SHINOBI"
+        elseif (possFigures["THE ROBOT"]) then
+            resultType = "THE CYBORG"
         end
     end
 
@@ -520,7 +520,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         if (possFigures["THE BEGGAR"]) then
             resultType = "THE STUDENT"
         elseif (possFigures["THE GENIUS"]) then
-            resultType = "SCIENTIST"
+            resultType = "THE SCIENTIST"
         elseif (possFigures["THE ASSASSIN"]) then
             resultType = "THE HITMAN"
         elseif (possFigures["THE WARRIOR"]) then
@@ -566,8 +566,8 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         
         if (possFigures["THE ASSASSIN"]) then
             resultType = "THE SHERIFF"
-        elseif (possFigures["ROBOT"]) then
-            resultType = "ROBOCOP"
+        elseif (possFigures["THE ROBOT"]) then
+            resultType = "THE SENTINEL"
         end
     end
 
@@ -578,86 +578,86 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         elseif (possFigures["THE STUDENT"]) then
             resultType = "THE WIZARD"
         elseif (possFigures["THE EMPLOYEE"]) then
-            resultType = "SCIENTIST"
+            resultType = "THE SCIENTIST"
         elseif (possFigures["THE DICTATOR"]) then
-            resultType = "VILLAIN"
-        elseif (possFigures["ENGINEER"]) then
-            resultType = "ROBOT"
+            resultType = "THE VILLAIN"
+        elseif (possFigures["THE ENGINEER"]) then
+            resultType = "THE ROBOT"
         end
     end
 
     if(possFigures["THE MARTIAL ARTIST"]) then
         
         if (possFigures["THE WIZARD"]) then
-            resultType = "MONK"
+            resultType = "THE MONK"
         end
     end
     
     if(possFigures["THE SCAMMER"]) then
         
         if (possFigures["THE WIZARD"]) then
-            resultType = "ASTROLOGER"
+            resultType = "THE ASTROLOGER"
         end
     end
 
      if(possFigures["THE WIZARD"]) then
         
         if (possFigures["THE SCAMMER"]) then
-            resultType = "ASTROLOGER"
+            resultType = "THE ASTROLOGER"
         elseif (possFigures["THE NINJA"]) then
-            resultType = "SHINOBI"
+            resultType = "THE SHINOBI"
         elseif (possFigures["THE KNIGHT"]) then
-            resultType = "SUPERHERO"
+            resultType = "THE SUPERHERO"
         elseif (possFigures["THE MARTIAL ARTIST"]) then
-            resultType = "MONK"
+            resultType = "THE MONK"
         end
     end
 
-    if(possFigures["SCIENTIST"]) then
+    if(possFigures["THE SCIENTIST"]) then
         
         if (possFigures["THE GENERAL"]) then
-            resultType = "ENGINEER"
+            resultType = "THE ENGINEER"
         end
     end
 
-    if(possFigures["VILLAIN"]) then
+    if(possFigures["THE VILLAIN"]) then
         
-        if (possFigures["ASTRONAUT"]) then
-            resultType = "ALIEN"
+        if (possFigures["THE ASTRONAUT"]) then
+            resultType = "THE ALIEN"
         end
     end
 
     if(possFigures["THE COWBOY"]) then
         
-        if (possFigures["ASTRONAUT"]) then
-            resultType = "BOUNTY_HUNTER"
+        if (possFigures["THE ASTRONAUT"]) then
+            resultType = "THE BOUNTY HUNTER"
         end
     end
 
-    if(possFigures["ASTROLOGER"]) then
+    if(possFigures["THE ASTROLOGER"]) then
         
-        if (possFigures["ENGINEER"]) then
-            resultType = "ASTRONAUT"
+        if (possFigures["THE ENGINEER"]) then
+            resultType = "THE ASTRONAUT"
         end
     end
 
-    if(possFigures["SUPERHERO"]) then
+    if(possFigures["THE SUPERHERO"]) then
         
         if (possFigures["THE VIKING"]) then
-            resultType = "THOR"
+            resultType = "THE DEMIGOD"
         elseif (possFigures["THE MILLIONAIRE"]) then
-            resultType = "BATMAN"
-        elseif (possFigures["ALIEN"]) then
-            resultType = "SUPERMAN"
-        elseif (possFigures["ENGINEER"]) then
-            resultType = "IRONMAN"
+            resultType = "THE VIGILANTE"
+        elseif (possFigures["THE ALIEN"]) then
+            resultType = "THE STEEL MAN"
+        elseif (possFigures["THE ENGINEER"]) then
+            resultType = "THE PHILANTROPIST"
         end
     end
 
-    if(possFigures["MONK"]) then
+    if(possFigures["THE MONK"]) then
         
-        if (possFigures["ALIEN"]) then
-            resultType = "GOKU"
+        if (possFigures["THE ALIEN"]) then
+            resultType = "THE LEGEND"
         end
     end
 
@@ -668,28 +668,28 @@ function Figure.getMergeResult(figure1Type, figure2Type)
             resultType = "THE DICTATOR"
         elseif (possFigures["THE VIKING"]) then
             resultType = "THE CAPTAIN"
-        elseif (possFigures["SCIENTIST"]) then
-            resultType = "ENGINEER"
+        elseif (possFigures["THE SCIENTIST"]) then
+            resultType = "THE ENGINEER"
         end
     end
 
-    if(possFigures["ASTRONAUT"]) then
+    if(possFigures["THE ASTRONAUT"]) then
         
         if (possFigures["THE DICTATOR"]) then
-            resultType = "DARTH_VADER"
+            resultType = "THE EMPEROR"
         elseif (possFigures["THE COWBOY"]) then
-            resultType = "BOUNTY_HUNTER"
-        elseif (possFigures["VILLAIN"]) then
-            resultType = "ALIEN"
+            resultType = "THE BOUNTY HUNTER"
+        elseif (possFigures["THE VILLAIN"]) then
+            resultType = "THE ALIEN"
         end
     end
 
-    if(possFigures["ALIEN"]) then
+    if(possFigures["THE ALIEN"]) then
         
-        if (possFigures["SUPERHERO"]) then
-            resultType = "SUPERMAN"
-        elseif (possFigures["MONK"]) then
-            resultType = "GOKU"
+        if (possFigures["THE SUPERHERO"]) then
+            resultType = "THE STEEL MAN"
+        elseif (possFigures["THE MONK"]) then
+            resultType = "THE LEGEND"
         end
     end
 
