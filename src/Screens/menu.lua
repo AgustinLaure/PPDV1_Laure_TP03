@@ -8,10 +8,10 @@ local Menu = {}
 function Menu.init()
 
 	menu = {}
-	menu.play = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2, const.gameResWidth / 3, 30)
+	menu.play = Form.initRectangle(const.gameResWidth * 0.32 , const.gameResHeight / 2, const.gameResWidth / 5,  const.gameResHeight / 15)
 	--menu.settings = Form.initRectangle( const.gameResWidth * 0.25 , const.gameResHeight / 2 + 40, const.gameResWidth / 3, 30)
-	menu.credits = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 80, const.gameResWidth / 3, 30)
-    menu.quit = Form.initRectangle(const.gameResWidth * 0.25 , const.gameResHeight / 2 + 120, const.gameResWidth / 3, 30)
+	menu.credits = Form.initRectangle(const.gameResWidth * 0.32 , const.gameResHeight / 2 + const.gameResHeight / 14, const.gameResWidth / 5, const.gameResHeight / 15)
+    menu.quit = Form.initRectangle(const.gameResWidth * 0.32 , const.gameResHeight / 2 + (const.gameResHeight / 14) * 2, const.gameResWidth / 5, const.gameResHeight / 15)
     menu.font = love.graphics.setNewFont("resources/fonts/FredokaOne-Regular.ttf", 32)
 	return menu
 end
@@ -24,10 +24,10 @@ function Menu.draw(menu)
     Form.draw(menu.credits)
 	Form.draw(menu.quit)
     love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.print("Play", menu.play.pos.x + menu.play.width/2, menu.play.pos.y + menu.play.height*3 - 5)
+    love.graphics.printf("Play", menu.play.pos.x , menu.play.pos.y + menu.play.height*1.7, menu.play.width*1.85, "center")
     --love.graphics.print("Settings", menu.settings.pos.x + menu.settings.width/2, menu.settings.pos.y + menu.settings.height*3)
-    love.graphics.print("Credits", menu.credits.pos.x + menu.credits.width/2, menu.credits.pos.y + menu.credits.height*3+5)
-    love.graphics.print("Quit", menu.quit.pos.x + menu.quit.width/2, menu.quit.pos.y + menu.quit.height*3 + 20)
+    love.graphics.printf("Credits", menu.credits.pos.x, menu.credits.pos.y + menu.credits.height*1.85, menu.credits.width*1.85, "center")
+    love.graphics.printf("Quit", menu.quit.pos.x , menu.quit.pos.y + menu.quit.height*2, menu.quit.width*1.85, "center")
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setFont(const.defaultFont)
 end
