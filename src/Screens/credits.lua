@@ -4,6 +4,8 @@ local Sprite = require ("src/Textures/sprites")
 
 local Credits = {}
 
+local creditsSprite = love.graphics.newImage("resources/sprites/bg/exit.png")
+
 function Credits.init()
 
 	credits = {}
@@ -28,7 +30,7 @@ function Credits.draw(pause)
 	love.graphics.printf("Agustin Laure",300-credits.center,const.gameResHeight+150- (const.gameResHeight/5)*4, const.gameResWidth, "center")
 	Sprite.setPlayingBaseColor()
 	love.graphics.setFont(const.defaultFont)
-    Form.draw(credits.back)
+    Sprite.draw(creditsSprite, credits.back, 300, 300)
 end
 
 return Credits

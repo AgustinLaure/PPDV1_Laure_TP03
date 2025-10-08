@@ -20,6 +20,8 @@ local Credits = require ("src/Screens/credits")
 
 local Game = {}
 
+local pauseSprite = love.graphics.newImage("resources/sprites/bg/pause.png")
+
 function Game.init()
 	game = {}
 
@@ -90,7 +92,7 @@ function Game.draw(game)
 	Shelves.draw(game.shelves)
 	World.draw(game.world)
 	
-	Form.draw(pause.pauseButton)
+	Sprite.draw(pauseSprite, pause.pauseButton, 300, 300)
 
 	for i=1, #game.figures do
 		Figure.draw(game.figures[i], game.player)
