@@ -1,5 +1,6 @@
 local Form = require("src/Math/form")
 local const = require ("src/Config/const")
+local Sprite = require("src/Textures/sprites")
 
 local Pause = {}
 
@@ -17,11 +18,13 @@ end
 
 function Pause.draw(pause)
     love.graphics.setFont(pause.font)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.printf("Paused", 0, const.gameResHeight - (const.gameResHeight/4) * 3, const.gameResWidth, "center")
+    Sprite.setPlayingBaseColor()
     Form.draw(pause.resume)
 	--Form.draw(pause.settings)
 	Form.draw(pause.quit)
-    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.print("resume", pause.resume.pos.x * 1.45, pause.resume.pos.y + 80)
     --love.graphics.print("settings", pause.settings.pos.x*2, pause.settings.pos.y + 80)
     love.graphics.print("quit", pause.quit.pos.x* 1.5, pause.quit.pos.y + 85)
