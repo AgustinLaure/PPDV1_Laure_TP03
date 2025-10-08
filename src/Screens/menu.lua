@@ -1,6 +1,7 @@
 local Form = require("src/Math/form")
 local const = require ("src/Config/const")
 local gs = require ("src/Math/gamespace")
+local Sprite = require ("src/Textures/sprites")
 
 local Menu = {}
 
@@ -17,7 +18,7 @@ end
 
 function Menu.draw(menu)
     love.graphics.setFont(menu.font)
-    love.graphics.printf("THE STORY MERGER", 0, const.gameResHeight * 0.3, const.gameResWidth, "center")
+	Sprite.drawTitle()
     Form.draw(menu.play)
 	--Form.draw(menu.settings)
     Form.draw(menu.credits)
