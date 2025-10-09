@@ -551,7 +551,7 @@ function Figure.getMergeResult(figure1Type, figure2Type)
         elseif (possFigures["THE ASSASSIN"]) then
             resultType = "THE HITMAN"
         elseif (possFigures["THE WARRIOR"]) then
-            resultType = "THE POLICEMAN"
+            resultType = "THE MARTIAL ARTIST"
         end
     end
 
